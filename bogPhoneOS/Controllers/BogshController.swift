@@ -52,10 +52,18 @@ class BogshController: ObservableObject, Equatable {
         switch input.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() {
         case "hello":
             lines.append(BogshTextModel("hiiii", color: Color("bogsh")))
+        case "hi":
+            lines.append(BogshTextModel("hello", color: Color("bogsh")))
+        case "huh":
+            lines.append(BogshTextModel("what?", color: Color("bogsh")))
+        case "what":
+            lines.append(BogshTextModel("huh?", color: Color("bogsh")))
         case "clear":
             lines = [BogshTextModel("", color: Color("bogsh"))]
         case "boggers":
-            lines.append(BogshTextModel("BogChamp :o", color: Color("bogsh")))
+            lines.append(BogshTextModel("BogChamp 😲", color: Color("bogsh")))
+        case "bogchamp":
+            lines.append(BogshTextModel("BogChamp 😲", color: Color("bogsh")))
         case "logout":
             lines.append(BogshTextModel("logout? try bogout, idiot", color: Color("bogsh")))
         case "bogout":
