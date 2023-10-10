@@ -23,7 +23,9 @@ class BogshController: ObservableObject, Equatable {
     init(parent: BogshController? = nil) {
         self.parent = parent
         
-        lines.append(BogshTextModel("welcome to the bog :)", color: Color("bogsh")))
+        if parent != nil {
+            lines.append(BogshTextModel("welcome to the bog :)", color: Color("bogsh")))
+        }
     }
     
     func push(_ input: String) {
