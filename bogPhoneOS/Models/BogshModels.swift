@@ -58,7 +58,7 @@ struct BogshModel: Hashable, Identifiable {
             lines = []
             write("", color: Color("bogsh"))
         case "boggers":
-            write("BogChamp 😲", color: Color("bogsh"))
+            fallthrough
         case "bogchamp":
             write("BogChamp 😲", color: Color("bogsh"))
         case "logout":
@@ -69,9 +69,15 @@ struct BogshModel: Hashable, Identifiable {
             write("im sorry :(", color: Color("bogsh"))
         case "bogsh":
             write("Opening new bogsh window", color: Color("bogsh"))
+        case ":)":
+            fallthrough
+        case "🙂":
+            fallthrough
         case "smiley":
-            write("😀", color: Color("bogsh"))
             app = .smiley
+        case "kill":
+            app = .console
+            fallthrough
         case "exit":
             if app != .console {
                 app = .console
