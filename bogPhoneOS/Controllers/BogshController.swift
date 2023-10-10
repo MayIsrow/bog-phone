@@ -14,7 +14,7 @@ enum BogshApp {
 }
 
 class BogshController: ObservableObject, Equatable {
-    @Published private(set) var lines: [BogshTextModel] = []
+    @Published private(set) var lines: [BogshLineModel] = []
     @Published private(set) var isResponding = false
     @Published private(set) var app: BogshApp = .none
     
@@ -24,7 +24,7 @@ class BogshController: ObservableObject, Equatable {
         self.parent = parent
         
         if parent != nil {
-            lines.append(BogshTextModel("welcome to the bog :)", color: Color("bogsh")))
+            write("welcome to the bog :)", color: Color("bogsh"))
         }
     }
     
@@ -34,9 +34,8 @@ class BogshController: ObservableObject, Equatable {
             return
         }
         
-        let newLine = BogshTextModel("\(newInput)", color: Color("accent"))
-        lines.append(newLine)
-        
+        write(newInput, color: Color("accent"))
+
         isResponding = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -47,53 +46,55 @@ class BogshController: ObservableObject, Equatable {
     
     func closeApp() {
         app = .none
-        lines.append(BogshTextModel("welcome back to the bog", color: Color("bogsh")))
+        lines.append(BogshLineModel("welcome back to the bog", color: Color("bogsh")))
     }
     
     private func respond(_ input: String = "") {
-        switch input.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() {
+        let formattedInput = input.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        
+        switch formattedInput {
         case "hello":
-            lines.append(BogshTextModel("hiiii", color: Color("bogsh")))
+            write("hiiii", color: Color("bogsh"))
         case "hi":
-            lines.append(BogshTextModel("hello", color: Color("bogsh")))
+            write("hello", color: Color("bogsh"))
         case "huh":
-            lines.append(BogshTextModel("what?", color: Color("bogsh")))
+            write("what?", color: Color("bogsh"))
         case "what":
-            lines.append(BogshTextModel("huh?", color: Color("bogsh")))
+            write("huh?", color: Color("bogsh"))
         case "clear":
-            lines = [BogshTextModel("", color: Color("bogsh"))]
+            lines = [BogshLineModel("", color: Color("bogsh"))]
         case "boggers":
-            lines.append(BogshTextModel("BogChamp 😲", color: Color("bogsh")))
+            write("BogChamp 😲", color: Color("bogsh"))
         case "bogchamp":
-            lines.append(BogshTextModel("BogChamp 😲", color: Color("bogsh")))
+            write("BogChamp 😲", color: Color("bogsh"))
         case "logout":
-            lines.append(BogshTextModel("logout? try bogout, idiot", color: Color("bogsh")))
+            write("logout? try bogout, idiot", color: Color("bogsh"))
         case "bogout":
-            lines.append(BogshTextModel("no.", color: Color("bogsh")))
+            write("no.", color: Color("bogsh"))
         case ":(":
-            lines.append(BogshTextModel("im sorry :(", color: Color("bogsh")))
+            write("im sorry :(", color: Color("bogsh"))
         case "bogsh":
-            lines.append(BogshTextModel("Opening new bogsh window", color: Color("bogsh")))
+            write("Opening new bogsh window", color: Color("bogsh"))
             Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
                 self.app = .bogsh
             }
         case "smiley":
-            lines.append(BogshTextModel("😀", color: Color("bogsh")))
+            write("😀", color: Color("bogsh"))
             Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
                 self.app = .smiley
             }
         case "exit":
             if parent != nil {
-                lines.append(BogshTextModel("Closing bogsh child", color: Color("bogsh")))
+                write("Closing bogsh child", color: Color("bogsh"))
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
                     self.parent?.closeApp()
                 }
             } else {
-                lines.append(BogshTextModel("exiting", color: Color("bogsh")))
+                write("exiting", color: Color("bogsh"))
                 lines = []
             }
         case "help":
-            lines.append(BogshTextModel("""
+            write("""
                 
                 Help Menu:
                 help - displays this message
@@ -103,10 +104,15 @@ class BogshController: ObservableObject, Equatable {
                 logout - calls you an idiot
                 smiley - opens the smiley app
                 ...and others???
-                """, color: Color("bogsh")))
+                """, color: Color("bogsh"))
+            
         default:
-            lines.append(BogshTextModel("Command not found: \(input)", color: Color("bogsh")))
+            write("Command not found: \(input)", color: Color("bogsh"))
         }
+    }
+    
+    private func write(_ text: String, color: Color) {
+        lines.append(BogshLineModel(text, color: color))
     }
     
     static func == (lhs: BogshController, rhs: BogshController) -> Bool {
@@ -114,7 +120,7 @@ class BogshController: ObservableObject, Equatable {
     }
 }
 
-struct BogshTextModel: Hashable, Identifiable {
+struct BogshLineModel: Hashable, Identifiable {
     private(set) var id = UUID()
     var text: String
     var textStyle: Font.TextStyle
@@ -128,7 +134,7 @@ struct BogshTextModel: Hashable, Identifiable {
         self.color = color
     }
     
-    init(_ BogshTextModel: BogshTextModel) {
+    init(_ BogshTextModel: BogshLineModel) {
         self.text = BogshTextModel.text
         self.textStyle = BogshTextModel.textStyle
         self.design = BogshTextModel.design
@@ -140,4 +146,8 @@ struct BogshTextModel: Hashable, Identifiable {
         return Text(text)
             .minimal()
     }
+}
+
+#Preview {
+    BogshView()
 }
