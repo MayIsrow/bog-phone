@@ -1,34 +1,34 @@
 //
-//  BogshController.swift
-//  Cyberpunk Terminal
+//  BogshModels.swift
+//  bogPhoneOS
 //
-//  Created by May Isrow on 10/9/23.
+//  Created by May Isrow on 10/10/23.
 //
 
 import SwiftUI
 
-enum BogshApp {
-    case none
-    case bogsh
+enum BogshAppType {
+    case console
     case smiley
 }
 
-class BogshController: ObservableObject, Equatable {
-    @Published private(set) var lines: [BogshLineModel] = []
-    @Published private(set) var isResponding = false
-    @Published private(set) var app: BogshApp = .none
+struct BogshModels: Hashable, Identifiable {
+    private(set) var id = UUID()
+    var bogshs: [BogshModel] = []
     
-    private let parent: BogshController?
-    
-    init(parent: BogshController? = nil) {
-        self.parent = parent
-        
-        if parent != nil {
-            write("welcome to the bog :)", color: Color("bogsh"))
-        }
+    init() {
+        bogshs.append(BogshModel(parent: self))
     }
+}
+
+struct BogshModel: Hashable, Identifiable {
+    private(set) var id = UUID()
+    private(set) var isResponding = false
+    private(set) var app: BogshAppType = .console
+    private(set) var lines: [BogshLineModel] = []
+    let parent: BogshModels
     
-    func push(_ input: String) {
+    mutating func push(_ input: String) {
         let newInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !isResponding, !newInput.isEmpty else {
             return
@@ -38,18 +38,11 @@ class BogshController: ObservableObject, Equatable {
 
         isResponding = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.respond(newInput)
-            self.isResponding = false
-        }
+        self.respond(newInput)
+        self.isResponding = false
     }
     
-    func closeApp() {
-        app = .none
-        lines.append(BogshLineModel("welcome back to the bog", color: Color("bogsh")))
-    }
-    
-    private func respond(_ input: String = "") {
+    private mutating func respond(_ input: String = "") {
         let formattedInput = input.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         
         switch formattedInput {
@@ -62,7 +55,8 @@ class BogshController: ObservableObject, Equatable {
         case "what":
             write("huh?", color: Color("bogsh"))
         case "clear":
-            lines = [BogshLineModel("", color: Color("bogsh"))]
+            lines = []
+            write("", color: Color("bogsh"))
         case "boggers":
             write("BogChamp 😲", color: Color("bogsh"))
         case "bogchamp":
@@ -75,24 +69,17 @@ class BogshController: ObservableObject, Equatable {
             write("im sorry :(", color: Color("bogsh"))
         case "bogsh":
             write("Opening new bogsh window", color: Color("bogsh"))
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
-                self.app = .bogsh
-            }
         case "smiley":
             write("😀", color: Color("bogsh"))
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
-                self.app = .smiley
-            }
+            app = .smiley
         case "exit":
-            if parent != nil {
-                write("Closing bogsh child", color: Color("bogsh"))
-                Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
-                    self.parent?.closeApp()
-                }
+            if app != .console {
+                app = .console
             } else {
-                write("exiting", color: Color("bogsh"))
                 lines = []
             }
+        case "bilbo boggins":
+            write("What about second breakfast?", color: .red)
         case "help":
             write("""
                 
@@ -111,11 +98,11 @@ class BogshController: ObservableObject, Equatable {
         }
     }
     
-    private func write(_ text: String, color: Color) {
+    private mutating func write(_ text: String, color: Color) {
         lines.append(BogshLineModel(text, color: color))
     }
     
-    static func == (lhs: BogshController, rhs: BogshController) -> Bool {
+    static func == (lhs: BogshModel, rhs: BogshModel) -> Bool {
         return lhs.lines == rhs.lines
     }
 }
@@ -149,5 +136,5 @@ struct BogshLineModel: Hashable, Identifiable {
 }
 
 #Preview {
-    BogshView()
+    BogshView(bogsh: BogshModel(parent: BogshModels()))
 }

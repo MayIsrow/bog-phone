@@ -7,34 +7,39 @@
 
 import SwiftUI
 
+
+
 struct BogshView: View {
-    @ObservedObject var bogsh: BogshController
+    @State var bogsh: BogshModel
     @State private var text = ""
     @State private var lastId: UUID?
     
-    init(_ bogsh: BogshController = BogshController()) {
-        self.bogsh = bogsh
-    }
-    
     var body: some View {
-        ZStack {
-            if bogsh.app == .none {
-                bogshView
-            } else {
-                bogshAppView
+        VStack {
+            switch bogsh.app {
+            case .smiley:
+                SmileyView()
+            default:
+                console
             }
+            
+            TerminalTextField("bogsh", text: $text, accentColor: Color("accent"), bogsh: bogsh) {
+                if bogsh.lines.isEmpty {
+                    withAnimation {
+                        bogsh.push("\(text)")
+                        text = ""
+                    }
+                } else {
+                    bogsh.push("\(text)")
+                    text = ""
+                }
+            }
+            .padding([.horizontal, .bottom])
         }
     }
     
-    var bogshView: some View {
+    var console: some View {
         VStack {
-            HStack {
-                Image(systemName: "microbe.circle")
-                    .minimal(.largeTitle, color: Color("accent"))
-                
-                Text("bogPhoneOS")
-                    .minimal(.largeTitle, color: Color("accent"))
-            }
             ScrollViewReader { scrollView in
                 ScrollView {
                     ForEach(bogsh.lines, id: \.self) { line in
@@ -60,36 +65,12 @@ struct BogshView: View {
                         scrollView.scrollTo(lastId, anchor: .bottom)
                     }
                 }
-                TerminalTextField("bogsh", text: $text, accentColor: Color("accent"), bogsh: bogsh) {
-                    if bogsh.lines.isEmpty {
-                        withAnimation {
-                            bogsh.push("\(text)")
-                            text = ""
-                        }
-                    } else {
-                        bogsh.push("\(text)")
-                        text = ""
-                    }
-                }
-                .padding([.horizontal, .bottom])
-            }
-        }
-    }
-    
-    var bogshAppView: some View {
-        ZStack {
-            switch(bogsh.app) {
-            case .bogsh:
-                BogshView(BogshController(parent: bogsh))
-            case .smiley:
-                SmileBogshApp(bogsh: bogsh)
-            case .none:
-                EmptyView()
+                
             }
         }
     }
 }
 
 #Preview {
-    BogshView()
+    BogshView(bogsh: BogshModel(parent: BogshModels()))
 }

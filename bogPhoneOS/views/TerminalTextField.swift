@@ -11,16 +11,16 @@ struct TerminalTextField: View {
     @State var placeHolderText: String
     @Binding var text: String
     @State var color: Color
-    @ObservedObject var bogsh: BogshController
+    @State var bogsh: BogshModel
     @State var onCommit: () -> Void
     
     @FocusState private var isFocused: Bool
     
-    init(_ placeHolderText: String = "", text: Binding<String>, accentColor: Color = .primary, bogsh: BogshController, onCommit: @escaping () -> Void = {}) {
+    init(_ placeHolderText: String = "", text: Binding<String>, accentColor: Color = .primary, bogsh: BogshModel, onCommit: @escaping () -> Void = {}) {
         self._placeHolderText = State(initialValue: placeHolderText)
         self._text = text
         self._color = State(initialValue: accentColor)
-        self._bogsh = ObservedObject(initialValue: bogsh)
+        self._bogsh = State(initialValue: bogsh)
         self._onCommit = State(initialValue: onCommit)
     }
     
@@ -35,7 +35,7 @@ struct TerminalTextField: View {
                     }
                     
                     Image(systemName: "chevron.right")
-                    .padding(buttonPadding, 10)
+                        .padding(buttonPadding, 10)
                 }})
             .buttonStyle(MinimalButtonStyle(color: color))
             
@@ -57,6 +57,7 @@ struct TerminalTextField: View {
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(color, lineWidth: 2))
     }
     
+    
     private var buttonPadding:Edge.Set.ArrayLiteralElement {
         !placeHolderText.isEmpty ? [.vertical] : [.leading, .vertical]
     }
@@ -66,12 +67,12 @@ struct TerminalTextField: View {
             onCommit()
             isFocused = true
         }
-        
     }
 }
 
+
 #Preview {
-    TerminalTextField("bogsh",text: .constant("Hello World!"), accentColor: Color("accent"), bogsh: BogshController()) {
+    TerminalTextField("bogsh",text: .constant("Hello World!"), accentColor: Color("accent"), bogsh: BogshModel(parent: BogshModels())) {
         print("test")
     }
     .padding()

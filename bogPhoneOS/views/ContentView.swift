@@ -8,10 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var bogsh = BogshController()
-    
     var body: some View {
-        BogshView(bogsh)
+        VStack {
+            HStack {
+                Image(systemName: "microbe.circle")
+                    .minimal(.title, color: Color("accent"))
+                
+                Text("bogPhoneOS")
+                    .minimal(.title, color: Color("accent"))
+            }
+            
+            BogshView(bogsh: BogshModel(parent: BogshModels()))
+        }
+        
     }
 }
 

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6C43AF4F2AD5120200452CA7 /* SmileBogshApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43AF4E2AD5120200452CA7 /* SmileBogshApp.swift */; };
+		6C43AF4F2AD5120200452CA7 /* SmileyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43AF4E2AD5120200452CA7 /* SmileyView.swift */; };
 		6C75C8262AD4EBDF00FFFE24 /* bogPhoneOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C8252AD4EBDF00FFFE24 /* bogPhoneOSApp.swift */; };
 		6C75C82A2AD4EBE100FFFE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C75C8292AD4EBE100FFFE24 /* Assets.xcassets */; };
 		6C75C82E2AD4EBE100FFFE24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C75C82D2AD4EBE100FFFE24 /* Preview Assets.xcassets */; };
@@ -16,12 +16,12 @@
 		6C75C83D2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83A2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift */; };
 		6C75C83E2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83B2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift */; };
 		6C75C83F2AD4EC4F00FFFE24 /* MinimalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83C2AD4EC4F00FFFE24 /* MinimalModifier.swift */; };
-		6C75C8422AD4EC7500FFFE24 /* BogshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C8412AD4EC7500FFFE24 /* BogshController.swift */; };
 		6C75C8442AD4F69A00FFFE24 /* BogshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C8432AD4F69A00FFFE24 /* BogshView.swift */; };
+		6CA8B28C2AD60E3C0008074A /* BogshModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B28B2AD60E3C0008074A /* BogshModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6C43AF4E2AD5120200452CA7 /* SmileBogshApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmileBogshApp.swift; sourceTree = "<group>"; };
+		6C43AF4E2AD5120200452CA7 /* SmileyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmileyView.swift; sourceTree = "<group>"; };
 		6C75C8222AD4EBDF00FFFE24 /* bogPhoneOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bogPhoneOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C75C8252AD4EBDF00FFFE24 /* bogPhoneOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bogPhoneOSApp.swift; sourceTree = "<group>"; };
 		6C75C8292AD4EBE100FFFE24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -32,8 +32,8 @@
 		6C75C83A2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalTextFieldStyle.swift; sourceTree = "<group>"; };
 		6C75C83B2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalButtonStyle.swift; sourceTree = "<group>"; };
 		6C75C83C2AD4EC4F00FFFE24 /* MinimalModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalModifier.swift; sourceTree = "<group>"; };
-		6C75C8412AD4EC7500FFFE24 /* BogshController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BogshController.swift; sourceTree = "<group>"; };
 		6C75C8432AD4F69A00FFFE24 /* BogshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshView.swift; sourceTree = "<group>"; };
+		6CA8B28B2AD60E3C0008074A /* BogshModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +66,7 @@
 		6C75C8242AD4EBDF00FFFE24 /* bogPhoneOS */ = {
 			isa = PBXGroup;
 			children = (
+				6CA8B28A2AD60E240008074A /* Models */,
 				6C75C8402AD4EC7500FFFE24 /* Controllers */,
 				6C75C8392AD4EC4F00FFFE24 /* styles */,
 				6C75C8342AD4EC4500FFFE24 /* views */,
@@ -91,7 +92,7 @@
 				6C75C8352AD4EC4500FFFE24 /* TerminalTextField.swift */,
 				6C75C8362AD4EC4500FFFE24 /* ContentView.swift */,
 				6C75C8432AD4F69A00FFFE24 /* BogshView.swift */,
-				6C43AF4E2AD5120200452CA7 /* SmileBogshApp.swift */,
+				6C43AF4E2AD5120200452CA7 /* SmileyView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -109,9 +110,16 @@
 		6C75C8402AD4EC7500FFFE24 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6C75C8412AD4EC7500FFFE24 /* BogshController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6CA8B28A2AD60E240008074A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6CA8B28B2AD60E3C0008074A /* BogshModels.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,12 +195,12 @@
 				6C75C8442AD4F69A00FFFE24 /* BogshView.swift in Sources */,
 				6C75C83F2AD4EC4F00FFFE24 /* MinimalModifier.swift in Sources */,
 				6C75C83D2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift in Sources */,
-				6C43AF4F2AD5120200452CA7 /* SmileBogshApp.swift in Sources */,
+				6C43AF4F2AD5120200452CA7 /* SmileyView.swift in Sources */,
 				6C75C83E2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift in Sources */,
 				6C75C8262AD4EBDF00FFFE24 /* bogPhoneOSApp.swift in Sources */,
 				6C75C8382AD4EC4500FFFE24 /* ContentView.swift in Sources */,
+				6CA8B28C2AD60E3C0008074A /* BogshModels.swift in Sources */,
 				6C75C8372AD4EC4500FFFE24 /* TerminalTextField.swift in Sources */,
-				6C75C8422AD4EC7500FFFE24 /* BogshController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
