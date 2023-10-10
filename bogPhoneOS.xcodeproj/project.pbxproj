@@ -16,6 +16,7 @@
 		6C75C83E2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83B2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift */; };
 		6C75C83F2AD4EC4F00FFFE24 /* MinimalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83C2AD4EC4F00FFFE24 /* MinimalModifier.swift */; };
 		6C75C8422AD4EC7500FFFE24 /* BogshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C8412AD4EC7500FFFE24 /* BogshController.swift */; };
+		6C75C8442AD4F69A00FFFE24 /* BogshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C8432AD4F69A00FFFE24 /* BogshView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		6C75C83B2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalButtonStyle.swift; sourceTree = "<group>"; };
 		6C75C83C2AD4EC4F00FFFE24 /* MinimalModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalModifier.swift; sourceTree = "<group>"; };
 		6C75C8412AD4EC7500FFFE24 /* BogshController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BogshController.swift; sourceTree = "<group>"; };
+		6C75C8432AD4F69A00FFFE24 /* BogshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				6C75C8352AD4EC4500FFFE24 /* TerminalTextField.swift */,
 				6C75C8362AD4EC4500FFFE24 /* ContentView.swift */,
+				6C75C8432AD4F69A00FFFE24 /* BogshView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C75C8442AD4F69A00FFFE24 /* BogshView.swift in Sources */,
 				6C75C83F2AD4EC4F00FFFE24 /* MinimalModifier.swift in Sources */,
 				6C75C83D2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift in Sources */,
 				6C75C83E2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift in Sources */,
