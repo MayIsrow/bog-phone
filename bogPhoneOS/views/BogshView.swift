@@ -17,7 +17,24 @@ struct BogshView: View {
     }
     
     var body: some View {
+        ZStack {
+            if bogsh.app == .none {
+                bogshView
+            } else {
+                bogshAppView
+            }
+        }
+    }
+    
+    var bogshView: some View {
         VStack {
+            HStack {
+                Image(systemName: "microbe.circle")
+                    .minimal(.largeTitle, color: Color("accent"))
+                
+                Text("bogPhoneOS")
+                    .minimal(.largeTitle, color: Color("accent"))
+            }
             ScrollViewReader { scrollView in
                 ScrollView {
                     ForEach(bogsh.lines, id: \.self) { line in
@@ -54,7 +71,20 @@ struct BogshView: View {
                         text = ""
                     }
                 }
-                .padding()
+                .padding([.horizontal, .bottom])
+            }
+        }
+    }
+    
+    var bogshAppView: some View {
+        ZStack {
+            switch(bogsh.app) {
+            case .bogsh:
+                BogshView(BogshController(parent: bogsh))
+            case .smiley:
+                SmileBogshApp(bogsh: bogsh)
+            case .none:
+                EmptyView()
             }
         }
     }

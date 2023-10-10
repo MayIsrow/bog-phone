@@ -45,9 +45,7 @@ struct TerminalTextField: View {
             
             Button(action: action, label: {
                 if !bogsh.isResponding {
-                    withAnimation {
-                        Image(systemName: "forward.frame.fill")
-                    }
+                    Image(systemName: "forward.frame.fill")
                 } else {
                     withAnimation {
                         ProgressView()
