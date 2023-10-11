@@ -108,6 +108,7 @@ struct BogshModel: Hashable, Identifiable {
                 logout - calls you an idiot
                 smiley - opens the smiley app
                 frog - opens the frog app
+                hide - go to a safe place :)
                 ...and others???
                 """, color: Color("bogsh"))
             
