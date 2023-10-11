@@ -12,10 +12,10 @@ struct ContentView: View {
         VStack {
             HStack {
                 Image(systemName: "microbe.circle")
-                    .minimal(.title, color: Color("accent"))
+                    .minimal(.title2, color: Color("accent"))
                 
                 Text("bogPhoneOS")
-                    .minimal(.title, color: Color("accent"))
+                    .minimal(.title2, color: Color("accent"))
             }
             
             BogshView(bogsh: BogshModel(parent: BogshModels()))
