@@ -10,6 +10,7 @@ import SwiftUI
 struct BogshView: View {
     @State var bogsh: BogshModel
     @State private var text = ""
+    @State var isInputEnabled = true
     
     var body: some View {
         VStack {
@@ -22,15 +23,10 @@ struct BogshView: View {
                 console
             }
             
-            TerminalTextField("bogsh", text: $text, accentColor: Color("accent"), bogsh: bogsh) {
-                if bogsh.lines.isEmpty {
-                    withAnimation {
-                        bogsh.push("\(text)")
-                        text = ""
-                    }
-                } else {
-                    bogsh.push("\(text)")
-                    text = ""
+            TerminalTextField("bogsh", text: $text, accentColor: Color("accent"), isInputEnabled: $isInputEnabled) {
+                withAnimation {
+                    writeToConsole(text)
+                    
                 }
             }
             .padding([.horizontal, .bottom])
@@ -61,6 +57,11 @@ struct BogshView: View {
                 }
             }
         }
+    }
+    
+    private func writeToConsole(_ text: String) {
+        self.text = ""
+        bogsh.push("\(text)")
     }
 }
 

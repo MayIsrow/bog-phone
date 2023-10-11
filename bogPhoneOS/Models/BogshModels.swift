@@ -24,23 +24,16 @@ struct BogshModels: Hashable, Identifiable {
 
 struct BogshModel: Hashable, Identifiable {
     private(set) var id = UUID()
-    private(set) var isResponding = false
     private(set) var app: BogshAppType = .console
     private(set) var lines: [BogshLineModel] = []
     var parent: BogshModels = BogshModels()
     
     mutating func push(_ input: String) {
         let newInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !isResponding, !newInput.isEmpty else {
-            return
-        }
         
         write(newInput, color: Color("accent"))
-
-        isResponding = true
         
         self.respond(newInput)
-        self.isResponding = false
     }
     
     private mutating func respond(_ input: String = "") {
