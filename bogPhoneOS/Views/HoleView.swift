@@ -17,7 +17,11 @@ struct HoleView: View {
         VStack {
             Spacer()
             Button {
-                speechSynthesizer.speak(utterance)
+                if !speechSynthesizer.isSpeaking  {
+                    speechSynthesizer.speak(utterance)
+                } else {
+                    speechSynthesizer.stopSpeaking(at: .immediate)
+                }
             } label: {
                 Text("🕳️")
                     .font(.system(size: 150))
@@ -27,11 +31,9 @@ struct HoleView: View {
             Spacer()
         }
         .onAppear {
-            utterance.pitchMultiplier = 1.0
+            utterance.pitchMultiplier = 0.3
             utterance.rate = 0.4
             utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-            
-            
         }
     }
 }

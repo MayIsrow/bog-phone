@@ -78,8 +78,8 @@
 			children = (
 				6CA8B28F2AD629C40008074A /* Controllers */,
 				6CA8B28A2AD60E240008074A /* Models */,
-				6C75C8392AD4EC4F00FFFE24 /* styles */,
-				6C75C8342AD4EC4500FFFE24 /* views */,
+				6C75C8392AD4EC4F00FFFE24 /* Styles */,
+				6C75C8342AD4EC4500FFFE24 /* Views */,
 				6C75C8252AD4EBDF00FFFE24 /* bogPhoneOSApp.swift */,
 				6C75C8292AD4EBE100FFFE24 /* Assets.xcassets */,
 				6CB74D332AD746CB00036327 /* Audio */,
@@ -97,7 +97,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		6C75C8342AD4EC4500FFFE24 /* views */ = {
+		6C75C8342AD4EC4500FFFE24 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				6C75C8352AD4EC4500FFFE24 /* TerminalTextField.swift */,
@@ -107,17 +107,17 @@
 				6CA8B2922AD630BC0008074A /* FrogView.swift */,
 				6CA8B2942AD6404D0008074A /* HoleView.swift */,
 			);
-			path = views;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		6C75C8392AD4EC4F00FFFE24 /* styles */ = {
+		6C75C8392AD4EC4F00FFFE24 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
 				6C75C83A2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift */,
 				6C75C83B2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift */,
 				6C75C83C2AD4EC4F00FFFE24 /* MinimalModifier.swift */,
 			);
-			path = styles;
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		6CA8B28A2AD60E240008074A /* Models */ = {
