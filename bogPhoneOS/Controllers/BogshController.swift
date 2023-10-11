@@ -16,15 +16,12 @@ class BogshController: ObservableObject {
     
     func push(_ input: String) {
         let newInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
-        
         write(newInput, color: Color("accent"))
-        
         self.respond(newInput)
     }
     
     private func respond(_ input: String = "") {
         let formattedInput = input.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-        
         switch formattedInput {
         case "hello":
             write("hiiii", color: Color("bogsh"))
@@ -84,7 +81,6 @@ class BogshController: ObservableObject {
             model.app = .hole
         case "help":
             write("""
-                
                 Help Menu:
                 help - displays this message
                 clear - clears the screen
@@ -96,7 +92,6 @@ class BogshController: ObservableObject {
                 hide - go to a safe place :)
                 ...and others???
                 """, color: Color("bogsh"))
-            
         default:
             write("Command not found: \(input)", color: Color("bogsh"))
         }

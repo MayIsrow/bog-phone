@@ -26,11 +26,9 @@ struct BogshView: View {
             default:
                 console
             }
-            
             TerminalTextField("bogsh", text: $text, accentColor: Color("accent"), isInputEnabled: $isInputEnabled) {
                 withAnimation {
                     writeToConsole(text)
-                    
                 }
             }
             .padding([.horizontal, .bottom])
@@ -51,7 +49,6 @@ struct BogshView: View {
                         .padding([.vertical],3)
                         .id(line.id)
                     }
-                    
                 }
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("accent"), lineWidth: 2))
                 .modifier(MinimalModifier(color: Color("accent")))
