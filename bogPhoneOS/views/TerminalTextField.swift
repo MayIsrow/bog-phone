@@ -30,7 +30,7 @@ struct TerminalTextField: View {
                 HStack {
                     if !placeHolderText.isEmpty {
                         Text(placeHolderText)
-                            .minimal(color:color)
+                            .modifier(MinimalModifier(color:color))
                             .padding([.leading, .vertical], 10)
                     }
                     

@@ -18,6 +18,7 @@ struct BogshModels: Hashable, Identifiable {
     
     init() {
         bogshs.append(BogshModel(parent: self))
+        bogshs.append(BogshModel(parent: self))
     }
 }
 
@@ -137,7 +138,7 @@ struct BogshLineModel: Hashable, Identifiable {
     // a function that returns this model as some View
     func asView() -> some View {
         return Text(text)
-            .minimal()
+            .modifier(MinimalModifier())
     }
 }
 

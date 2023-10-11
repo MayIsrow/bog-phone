@@ -12,7 +12,7 @@ struct MinimalTextFieldStyle: TextFieldStyle {
     
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
-            .minimal(color: color)
+            .modifier(MinimalModifier(color: color))
             .background(.clear)
     }
 }

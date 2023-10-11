@@ -11,7 +11,7 @@ struct MinimalButtonStyle: ButtonStyle {
     @State var color: Color = .primary
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .minimal(.headline, color: color)
+            .modifier(MinimalModifier(.headline, color: color))
     }
 }
 

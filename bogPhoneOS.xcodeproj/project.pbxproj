@@ -67,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				6CA8B28A2AD60E240008074A /* Models */,
-				6C75C8402AD4EC7500FFFE24 /* Controllers */,
 				6C75C8392AD4EC4F00FFFE24 /* styles */,
 				6C75C8342AD4EC4500FFFE24 /* views */,
 				6C75C8252AD4EBDF00FFFE24 /* bogPhoneOSApp.swift */,
@@ -105,13 +104,6 @@
 				6C75C83C2AD4EC4F00FFFE24 /* MinimalModifier.swift */,
 			);
 			path = styles;
-			sourceTree = "<group>";
-		};
-		6C75C8402AD4EC7500FFFE24 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		6CA8B28A2AD60E240008074A /* Models */ = {

@@ -26,9 +26,3 @@ struct MinimalModifier: ViewModifier {
             .accentColor(color)
     }
 }
-
-extension View {
-    func minimal(_ textStyle: Font.TextStyle = .body, design: Font.Design = .monospaced, color: Color = .primary) -> some View {
-        self.modifier(MinimalModifier(textStyle, design: design, color: color))
-    }
-}
