@@ -19,6 +19,8 @@ struct BogshView: View {
                 SmileyView()
             case .frog:
                 FrogView()
+            case .hole:
+                HoleView()
             default:
                 console
             }

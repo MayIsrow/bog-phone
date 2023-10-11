@@ -11,6 +11,7 @@ enum BogshAppType {
     case console
     case smiley
     case frog
+    case hole
 }
 
 struct BogshModels: Hashable, Identifiable {
@@ -92,6 +93,10 @@ struct BogshModel: Hashable, Identifiable {
             app = .frog
         case "bilbo boggins":
             write("What about second breakfast?", color: .red)
+        case "hole":
+            fallthrough
+        case "hide":
+            app = .hole
         case "help":
             write("""
                 

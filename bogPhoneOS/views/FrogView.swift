@@ -10,7 +10,7 @@ import SwiftUI
 struct FrogView: View {
     var body: some View {
         Text("🐸")
-            .font(.system(size: 100))
+            .font(.system(size: 150))
     }
 }
 

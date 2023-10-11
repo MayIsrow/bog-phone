@@ -21,6 +21,7 @@
 		6CA8B28E2AD623350008074A /* BogshViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B28D2AD623350008074A /* BogshViews.swift */; };
 		6CA8B2912AD629DD0008074A /* BogshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B2902AD629DD0008074A /* BogshController.swift */; };
 		6CA8B2932AD630BC0008074A /* FrogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B2922AD630BC0008074A /* FrogView.swift */; };
+		6CA8B2952AD6404D0008074A /* HoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B2942AD6404D0008074A /* HoleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		6CA8B28D2AD623350008074A /* BogshViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshViews.swift; sourceTree = "<group>"; };
 		6CA8B2902AD629DD0008074A /* BogshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshController.swift; sourceTree = "<group>"; };
 		6CA8B2922AD630BC0008074A /* FrogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogView.swift; sourceTree = "<group>"; };
+		6CA8B2942AD6404D0008074A /* HoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				6C43AF4E2AD5120200452CA7 /* SmileyView.swift */,
 				6CA8B28D2AD623350008074A /* BogshViews.swift */,
 				6CA8B2922AD630BC0008074A /* FrogView.swift */,
+				6CA8B2942AD6404D0008074A /* HoleView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				6C75C83D2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift in Sources */,
 				6C43AF4F2AD5120200452CA7 /* SmileyView.swift in Sources */,
 				6CA8B28E2AD623350008074A /* BogshViews.swift in Sources */,
+				6CA8B2952AD6404D0008074A /* HoleView.swift in Sources */,
 				6C75C83E2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift in Sources */,
 				6CA8B2932AD630BC0008074A /* FrogView.swift in Sources */,
 				6C75C8262AD4EBDF00FFFE24 /* bogPhoneOSApp.swift in Sources */,
