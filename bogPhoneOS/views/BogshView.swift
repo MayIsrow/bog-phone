@@ -65,7 +65,7 @@ struct BogshView: View {
     
     private func writeToConsole(_ text: String) {
         self.text = ""
-        bogsh.model.push("\(text)")
+        bogsh.push("\(text)")
     }
 }
 
