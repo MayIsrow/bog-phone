@@ -6,11 +6,20 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct FrogView: View {
+    @State var audioPlayer: AVAudioPlayer?
+    
     var body: some View {
-        Text("🐸")
-            .font(.system(size: 150))
+        VStack {
+            Button {
+                GSAudio.sharedInstance.playSound(soundFileName: "frog.mp3")
+            } label: {
+                Text("🐸")
+                    .font(.system(size: 150))
+            }
+        }
     }
 }
 
