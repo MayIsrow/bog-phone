@@ -155,5 +155,5 @@ struct BogshLineModel: Hashable, Identifiable {
 }
 
 #Preview {
-    BogshView(bogsh: BogshModel(parent: BogshModels()))
+    BogshView()
 }

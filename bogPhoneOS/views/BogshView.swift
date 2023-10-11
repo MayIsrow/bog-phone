@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct BogshView: View {
-    @State var bogsh: BogshModel
+    
+    @StateObject var bogsh: BogshController = BogshController()
+    
     @State private var text = ""
     @State var isInputEnabled = true
     
     var body: some View {
         VStack {
-            switch bogsh.app {
+            switch bogsh.model.app {
             case .smiley:
                 SmileyView()
             case .frog:
@@ -39,7 +41,7 @@ struct BogshView: View {
         VStack {
             ScrollViewReader { scrollView in
                 ScrollView {
-                    ForEach(bogsh.lines, id: \.self) { line in
+                    ForEach(bogsh.model.lines, id: \.self) { line in
                         HStack {
                             Text("\(String(line.id.uuidString.prefix(3)))~\(line.text)")
                                 .modifier(MinimalModifier(line.textStyle, design: line.design, color: line.color))
@@ -54,7 +56,7 @@ struct BogshView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("accent"), lineWidth: 2))
                 .modifier(MinimalModifier(color: Color("accent")))
                 .padding()
-                .onChange(of: bogsh.lines.last?.id) { id in
+                .onChange(of: bogsh.model.lines.last?.id) { id in
                     scrollView.scrollTo(id, anchor: .bottom)
                 }
             }
@@ -63,10 +65,10 @@ struct BogshView: View {
     
     private func writeToConsole(_ text: String) {
         self.text = ""
-        bogsh.push("\(text)")
+        bogsh.model.push("\(text)")
     }
 }
 
 #Preview {
-    BogshView(bogsh: BogshModel(parent: BogshModels()))
+    BogshView()
 }

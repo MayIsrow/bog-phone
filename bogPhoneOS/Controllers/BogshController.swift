@@ -8,9 +8,9 @@
 import Foundation
 
 class BogshController: ObservableObject {
-    @Published var bogshModels: BogshModels
+    @Published var model: BogshModel
     
     init() {
-        bogshModels = BogshModels()
+        model = BogshModel()
     }
 }
