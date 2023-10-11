@@ -10,6 +10,7 @@ import SwiftUI
 enum BogshAppType {
     case console
     case smiley
+    case frog
 }
 
 struct BogshModels: Hashable, Identifiable {
@@ -17,7 +18,6 @@ struct BogshModels: Hashable, Identifiable {
     var bogshs: [BogshModel] = []
     
     init() {
-        bogshs.append(BogshModel(parent: self))
         bogshs.append(BogshModel(parent: self))
     }
 }
@@ -27,7 +27,7 @@ struct BogshModel: Hashable, Identifiable {
     private(set) var isResponding = false
     private(set) var app: BogshAppType = .console
     private(set) var lines: [BogshLineModel] = []
-    let parent: BogshModels
+    var parent: BogshModels = BogshModels()
     
     mutating func push(_ input: String) {
         let newInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -69,7 +69,8 @@ struct BogshModel: Hashable, Identifiable {
         case ":(":
             write("im sorry :(", color: Color("bogsh"))
         case "bogsh":
-            write("Opening new bogsh window", color: Color("bogsh"))
+            write("Coming soon!", color: Color("bogsh"))
+            //parent.bogshs.append(BogshModel(parent: parent))
         case ":)":
             fallthrough
         case "🙂":
@@ -85,6 +86,17 @@ struct BogshModel: Hashable, Identifiable {
             } else {
                 lines = []
             }
+        case "reactor":
+            fallthrough
+        case "silo":
+            write("I'm so freaking reactor pilled brother", color: Color("bogsh"))
+        case "frog":
+            fallthrough
+        case "bog":
+            fallthrough
+        case "🐸":
+            write("🐸", color: .green)
+            app = .frog
         case "bilbo boggins":
             write("What about second breakfast?", color: .red)
         case "help":

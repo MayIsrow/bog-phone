@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct BogshView: View {
     @State var bogsh: BogshModel
     @State private var text = ""
@@ -18,6 +16,8 @@ struct BogshView: View {
             switch bogsh.app {
             case .smiley:
                 SmileyView()
+            case .frog:
+                FrogView()
             default:
                 console
             }

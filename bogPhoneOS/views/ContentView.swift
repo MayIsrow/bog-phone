@@ -18,7 +18,7 @@ struct ContentView: View {
                     .modifier(MinimalModifier(.title2, color: Color("accent")))
             }
             
-            BogshView(bogsh: BogshModel(parent: BogshModels()))
+            BogshView(bogsh: BogshModel())
         }
         
     }
