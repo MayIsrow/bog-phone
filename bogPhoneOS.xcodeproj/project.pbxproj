@@ -23,6 +23,7 @@
 		6CA8B2932AD630BC0008074A /* FrogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B2922AD630BC0008074A /* FrogView.swift */; };
 		6CA8B2952AD6404D0008074A /* HoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B2942AD6404D0008074A /* HoleView.swift */; };
 		6CB74D372AD747F000036327 /* frog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6CB74D362AD747F000036327 /* frog.mp3 */; };
+		6CD0B5212AD7887D006162FB /* elevator-music.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6CD0B5202AD7887D006162FB /* elevator-music.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		6CA8B2922AD630BC0008074A /* FrogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogView.swift; sourceTree = "<group>"; };
 		6CA8B2942AD6404D0008074A /* HoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleView.swift; sourceTree = "<group>"; };
 		6CB74D362AD747F000036327 /* frog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frog.mp3; sourceTree = "<group>"; };
+		6CD0B5202AD7887D006162FB /* elevator-music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "elevator-music.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 		6CB74D332AD746CB00036327 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				6CD0B5202AD7887D006162FB /* elevator-music.wav */,
 				6CB74D362AD747F000036327 /* frog.mp3 */,
 			);
 			path = Audio;
@@ -205,6 +208,7 @@
 			files = (
 				6CB74D372AD747F000036327 /* frog.mp3 in Resources */,
 				6C75C82E2AD4EBE100FFFE24 /* Preview Assets.xcassets in Resources */,
+				6CD0B5212AD7887D006162FB /* elevator-music.wav in Resources */,
 				6C75C82A2AD4EBE100FFFE24 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

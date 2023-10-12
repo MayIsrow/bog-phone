@@ -6,43 +6,76 @@
 //
 
 import SwiftUI
+import Foundation
 
-enum BogshAppType {
+
+enum BogshAppType: String, Decodable, Encodable {
     case console
     case smiley
     case frog
     case hole
 }
 
-struct BogshModel: Hashable, Identifiable {
-    private(set) var id = UUID()
-    var app: BogshAppType = .console
-    var lines: [BogshLineModel] = []
+struct BogshModel: Decodable {
+
+    var app: BogshAppType = .console {
+        didSet {
+            saveAppToUserDefaults()
+        }
+    }
+    var lines: [BogshLineModel] = [] {
+        didSet {
+            saveLinesToUserDefaults()
+        }
+    }
     
-    static func == (lhs: BogshModel, rhs: BogshModel) -> Bool {
-        return lhs.lines == rhs.lines
+    func saveLinesToUserDefaults() {
+        do {
+            let encodedData = try JSONEncoder().encode(lines)
+            UserDefaults.standard.set(encodedData, forKey: "savedLines")
+        } catch {
+            print("Error saving lines to UserDefaults: \(error)")
+        }
+    }
+    
+    func saveAppToUserDefaults() {
+        do {
+            let encodedData = try JSONEncoder().encode(app.rawValue)
+            UserDefaults.standard.set(encodedData, forKey: "app")
+        } catch {
+            print("Error saving app to UserDefaults: \(error)")
+        }
+    }
+    
+    mutating func loadDataFromUserDefaults() {
+        if let savedData = UserDefaults.standard.data(forKey: "savedLines") {
+            do {
+                lines = try JSONDecoder().decode([BogshLineModel].self, from: savedData)
+            } catch {
+                print("Error loading lines from UserDefaults: \(error)")
+            }
+        }
+        
+        if let savedData = UserDefaults.standard.data(forKey: "app") {
+            do {
+                app = try JSONDecoder().decode(BogshAppType.self, from: savedData)
+            } catch {
+                print("Error loading app from UserDefaults: \(error)")
+            }
+        }
     }
 }
 
-struct BogshLineModel: Hashable, Identifiable {
+struct BogshLineModel: Identifiable, Decodable, Encodable, Hashable {
     private(set) var id = UUID()
     var text: String
-    var textStyle: Font.TextStyle
-    var design: Font.Design
-    var color: Color
+    //var textStyle: Font.TextStyle
+    //var design: Font.Design
+    var colorString: String
     
-    init(_ text: String, textStyle: Font.TextStyle = .body, design: Font.Design = .default, color: Color = .primary) {
+    init(_ text: String, colorString: String) {
         self.text = text
-        self.textStyle = textStyle
-        self.design = design
-        self.color = color
-    }
-    
-    init(_ BogshTextModel: BogshLineModel) {
-        self.text = BogshTextModel.text
-        self.textStyle = BogshTextModel.textStyle
-        self.design = BogshTextModel.design
-        self.color = BogshTextModel.color
+        self.colorString = colorString
     }
 }
 

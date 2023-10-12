@@ -10,16 +10,23 @@ import SwiftUI
 class BogshController: ObservableObject {
     @Published var model: BogshModel
     @Published var isResponding = false
+    @Published var app: BogshAppType = .console
     
     init() {
         model = BogshModel()
+        model.loadDataFromUserDefaults()
     }
     
     func push(_ input: String) {
         let newInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
         //write(newInput, color: Color("accent"))
-        model.lines.append(BogshLineModel(newInput, color: Color("accent")))
-        self.respond(newInput)
+        model.lines.append(BogshLineModel(newInput, colorString: "accent"))
+        
+        isResponding = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            self.respond(newInput)
+            self.isResponding = false
+        }
     }
     
     private func respond(_ input: String = "") {
@@ -29,30 +36,30 @@ class BogshController: ObservableObject {
         case " ":
             fallthrough
         case "":
-            write("", color: Color("bogsh"))
+            write("", colorString: "bogsh")
         case "hello":
-            write("hiiii", color: Color("bogsh"))
+            write("hiiii", colorString: "bogsh")
         case "hi":
-            write("hello", color: Color("bogsh"))
+            write("hello", colorString: "bogsh")
         case "huh":
-            write("what?", color: Color("bogsh"))
+            write("what?", colorString: "bogsh")
         case "what":
-            write("huh?", color: Color("bogsh"))
+            write("huh?", colorString: "bogsh")
         case "clear":
             model.lines = []
-            write("", color: Color("bogsh"))
+            write("", colorString: "bogsh")
         case "boggers":
             fallthrough
         case "bogchamp":
-            write("BogChamp 😲", color: Color("bogsh"))
+            write("BogChamp 😲", colorString: "bogsh")
         case "logout":
-            write("logout? try bogout, idiot", color: Color("bogsh"))
+            write("logout? try bogout, idiot", colorString: "bogsh")
         case "bogout":
-            write("no.", color: Color("bogsh"))
+            write("no.", colorString: "bogsh")
         case ":(":
-            write("im sorry :(", color: Color("bogsh"))
+            write("im sorry :(", colorString: "bogsh")
         case "bogsh":
-            write("Coming soon!", color: Color("bogsh"))
+            write("Coming soon!", colorString: "bogsh")
             //parent.bogshs.append(BogshModel(parent: parent))
         case ":)":
             fallthrough
@@ -72,20 +79,23 @@ class BogshController: ObservableObject {
         case "reactor":
             fallthrough
         case "silo":
-            write("I'm so freaking reactor pilled brother", color: Color("bogsh"))
+            write("I'm so freaking reactor pilled brother", colorString: "bogsh")
         case "frog":
             fallthrough
         case "bog":
             fallthrough
         case "🐸":
-            write("🐸", color: .green)
+            write("🐸", colorString: "bogsh")
             model.app = .frog
         case "bilbo boggins":
-            write("What about second breakfast?", color: .red)
+            write("What about second breakfast?", colorString: "bogsh")
         case "hole":
             fallthrough
         case "hide":
             model.app = .hole
+        case "relax":
+            write("No problem, I've got some chill tunes for ya champ.", colorString: "bogsh")
+            GSAudio.sharedInstance.playSound(soundFileName: "elevator-music.wav")
         case "help":
             write("""
                 Help Menu:
@@ -97,18 +107,15 @@ class BogshController: ObservableObject {
                 smiley - opens the smiley app
                 frog - opens the frog app
                 hide - go to a safe place :)
+                relax - helps keep you calm!
                 ...and others???
-                """, color: Color("bogsh"))
+                """, colorString: "bogsh")
         default:
-            write("Command not found: \(input)", color: Color("bogsh"))
+            write("Command not found: \(input)", colorString: "bogsh")
         }
     }
     
-    private func write(_ text: String, color: Color) {
-        isResponding = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            self.model.lines.append(BogshLineModel(text, color: color))
-            self.isResponding = false
-        }
+    private func write(_ text: String, colorString: String) {
+        self.model.lines.append(BogshLineModel(text, colorString: colorString))
     }
 }

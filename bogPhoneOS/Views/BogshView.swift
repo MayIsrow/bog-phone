@@ -41,7 +41,7 @@ struct BogshView: View {
                     ForEach(bogsh.model.lines, id: \.self) { line in
                         HStack {
                             Text("\(String(line.id.uuidString.prefix(3)))~\(line.text)")
-                                .modifier(MinimalModifier(line.textStyle, design: line.design, color: line.color))
+                                .modifier(MinimalModifier(color: Color(line.colorString)))
                                 .onTapGesture {
                                     writeToConsole(line.text)
                                 }
