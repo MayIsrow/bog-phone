@@ -18,8 +18,7 @@ class BogshController: ObservableObject {
     
     func push(_ input: String) {
         let newInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
-        //write(newInput, color: Color("accent"))
-        model.lines.append(BogshLineModel(newInput, colorString: "accent"))
+        write(newInput, color: .accent)
         
         isResponding = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
@@ -35,31 +34,31 @@ class BogshController: ObservableObject {
         case " ":
             fallthrough
         case "":
-            write("", colorString: "bogsh")
+            write("", color: .bogsh)
         case "hello":
-            write("hiiii", colorString: "bogsh")
+            write("hiiii", color: .bogsh)
         case "hi":
-            write("hello", colorString: "bogsh")
+            write("hello", color: .bogsh)
         case "huh":
-            write("what?", colorString: "bogsh")
+            write("what?", color: .bogsh)
         case "what":
-            write("huh?", colorString: "bogsh")
+            write("huh?", color: .bogsh)
         case "clear":
             //model.lines = []
-            write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", colorString: "bogsh")
-            write("", colorString: "bogsh")
+            write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", color: .bogsh)
+            write("", color: .bogsh)
         case "boggers":
             fallthrough
         case "bogchamp":
-            write("BogChamp 😲", colorString: "bogsh")
+            write("BogChamp 😲", color: .bogsh)
         case "logout":
-            write("logout? try bogout, idiot", colorString: "bogsh")
+            write("logout? try bogout, idiot", color: .bogsh)
         case "bogout":
-            write("no.", colorString: "bogsh")
+            write("no.", color: .bogsh)
         case ":(":
-            write("im sorry :(", colorString: "bogsh")
+            write("im sorry :(", color: .bogsh)
         case "bogsh":
-            write("Coming soon!", colorString: "bogsh")
+            write("Coming soon!", color: .bogsh)
             //parent.bogshs.append(BogshModel(parent: parent))
         case ":)":
             fallthrough
@@ -79,22 +78,22 @@ class BogshController: ObservableObject {
         case "reactor":
             fallthrough
         case "silo":
-            write("I'm so freaking reactor pilled brother", colorString: "bogsh")
+            write("I'm so freaking reactor pilled brother", color: .bogsh)
         case "frog":
             fallthrough
         case "bog":
             fallthrough
         case "🐸":
-            write("🐸", colorString: "bogsh")
+            write("🐸", color: .bogsh)
             model.app = .frog
         case "bilbo boggins":
-            write("What about second breakfast?", colorString: "bogsh")
+            write("What about second breakfast?", color: .bogsh)
         case "hole":
             fallthrough
         case "hide":
             model.app = .hole
         case "relax":
-            write("No problem, I've got some chill tunes for ya champ.", colorString: "bogsh")
+            write("No problem, I've got some chill tunes for ya champ.", color: .bogsh)
             GSAudio.sharedInstance.playSound(soundFileName: "elevator-music.wav")
         case "help":
             write("""
@@ -109,13 +108,17 @@ class BogshController: ObservableObject {
                 hide - go to a safe place :)
                 relax - helps keep you calm!
                 ...and others???
-                """, colorString: "bogsh")
+                """, color: .bogsh)
         default:
-            write("Command not found: \(input)", colorString: "bogsh")
+            write("Command not found: \(input)", color: .bogsh)
         }
     }
     
-    private func write(_ text: String, colorString: String) {
-        self.model.lines.append(BogshLineModel(text, colorString: colorString))
+    private func write(_ text: String, color: BogshColorType) {
+        self.model.lines.append(BogshLineModel(text, color: color))
     }
+}
+
+#Preview {
+    BogshView()
 }

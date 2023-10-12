@@ -25,6 +25,8 @@
 		6CA8B2952AD6404D0008074A /* HoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B2942AD6404D0008074A /* HoleView.swift */; };
 		6CB74D372AD747F000036327 /* frog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6CB74D362AD747F000036327 /* frog.mp3 */; };
 		6CD0B5212AD7887D006162FB /* elevator-music.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6CD0B5202AD7887D006162FB /* elevator-music.wav */; };
+		6CF18AD82AD8514600C0B068 /* BogshColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF18AD72AD8514600C0B068 /* BogshColorType.swift */; };
+		6CF18ADA2AD8516D00C0B068 /* BogshAppType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF18AD92AD8516D00C0B068 /* BogshAppType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		6CA8B2942AD6404D0008074A /* HoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleView.swift; sourceTree = "<group>"; };
 		6CB74D362AD747F000036327 /* frog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frog.mp3; sourceTree = "<group>"; };
 		6CD0B5202AD7887D006162FB /* elevator-music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "elevator-music.wav"; sourceTree = "<group>"; };
+		6CF18AD72AD8514600C0B068 /* BogshColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshColorType.swift; sourceTree = "<group>"; };
+		6CF18AD92AD8516D00C0B068 /* BogshAppType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshAppType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 		6C75C8242AD4EBDF00FFFE24 /* bogPhoneOS */ = {
 			isa = PBXGroup;
 			children = (
+				6CF18AD62AD8513200C0B068 /* Types */,
 				6CA8B28F2AD629C40008074A /* Controllers */,
 				6CA8B28A2AD60E240008074A /* Models */,
 				6C75C8392AD4EC4F00FFFE24 /* Styles */,
@@ -149,6 +154,15 @@
 				6CB74D362AD747F000036327 /* frog.mp3 */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		6CF18AD62AD8513200C0B068 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				6CF18AD72AD8514600C0B068 /* BogshColorType.swift */,
+				6CF18AD92AD8516D00C0B068 /* BogshAppType.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +240,7 @@
 				6C28B8A12AD74C3D009A0A37 /* GSAudio.swift in Sources */,
 				6C75C8442AD4F69A00FFFE24 /* BogshView.swift in Sources */,
 				6C75C83F2AD4EC4F00FFFE24 /* MinimalModifier.swift in Sources */,
+				6CF18ADA2AD8516D00C0B068 /* BogshAppType.swift in Sources */,
 				6C75C83D2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift in Sources */,
 				6C43AF4F2AD5120200452CA7 /* SmileyView.swift in Sources */,
 				6CA8B2952AD6404D0008074A /* HoleView.swift in Sources */,
@@ -234,6 +249,7 @@
 				6C75C8262AD4EBDF00FFFE24 /* bogPhoneOSApp.swift in Sources */,
 				6C75C8382AD4EC4500FFFE24 /* ContentView.swift in Sources */,
 				6CA8B28C2AD60E3C0008074A /* BogshModel.swift in Sources */,
+				6CF18AD82AD8514600C0B068 /* BogshColorType.swift in Sources */,
 				6CA8B2912AD629DD0008074A /* BogshController.swift in Sources */,
 				6C75C8372AD4EC4500FFFE24 /* TerminalTextField.swift in Sources */,
 				6C85475B2AD8306F0073EA66 /* BogshLineModel.swift in Sources */,

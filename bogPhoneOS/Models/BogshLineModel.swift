@@ -10,10 +10,10 @@ import Foundation
 struct BogshLineModel: Identifiable, Decodable, Encodable, Hashable {
     private(set) var id = UUID()
     var text: String
-    var colorString: String
+    var color: BogshColorType
     
-    init(_ text: String, colorString: String) {
+    init(_ text: String, color: BogshColorType) {
         self.text = text
-        self.colorString = colorString
+        self.color = color
     }
 }

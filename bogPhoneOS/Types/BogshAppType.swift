@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum BogshAppType: String, Decodable, Encodable {
+    case console
+    case smiley
+    case frog
+    case hole
+}

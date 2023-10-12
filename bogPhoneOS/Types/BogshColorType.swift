@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum BogshColorType: String, Decodable, Encodable {
+    case bogsh
+    case accent
+}

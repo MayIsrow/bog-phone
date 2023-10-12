@@ -8,14 +8,7 @@
 import SwiftUI
 import Foundation
 
-enum BogshAppType: String, Decodable, Encodable {
-    case console
-    case smiley
-    case frog
-    case hole
-}
-
-struct BogshModel: Decodable {
+struct BogshModel {
 
     var app: BogshAppType = .console {
         didSet {
@@ -63,8 +56,4 @@ struct BogshModel: Decodable {
             }
         }
     }
-}
-
-#Preview {
-    BogshView()
 }
