@@ -42,6 +42,9 @@ struct BogshView: View {
                         HStack {
                             Text("\(String(line.id.uuidString.prefix(3)))~\(line.text)")
                                 .modifier(MinimalModifier(line.textStyle, design: line.design, color: line.color))
+                                .onTapGesture {
+                                    writeToConsole(line.text)
+                                }
                             Spacer()
                         }
                         .padding(.leading, 6)
@@ -54,6 +57,9 @@ struct BogshView: View {
                 .padding()
                 .onChange(of: bogsh.model.lines.last?.id) { id in
                     scrollView.scrollTo(id, anchor: .bottom)
+                }
+                .onAppear {
+                    scrollView.scrollTo(bogsh.model.lines.last?.id, anchor: .bottom)
                 }
             }
         }

@@ -106,8 +106,7 @@ class BogshController: ObservableObject {
     
     private func write(_ text: String, color: Color) {
         isResponding = true
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             self.model.lines.append(BogshLineModel(text, color: color))
             self.isResponding = false
         }
