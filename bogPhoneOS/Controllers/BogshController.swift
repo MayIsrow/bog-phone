@@ -9,6 +9,7 @@ import SwiftUI
 
 class BogshController: ObservableObject {
     @Published var model: BogshModel
+    @Published var isResponding = false
     
     init() {
         model = BogshModel()
@@ -16,13 +17,19 @@ class BogshController: ObservableObject {
     
     func push(_ input: String) {
         let newInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
-        write(newInput, color: Color("accent"))
+        //write(newInput, color: Color("accent"))
+        model.lines.append(BogshLineModel(newInput, color: Color("accent")))
         self.respond(newInput)
     }
     
     private func respond(_ input: String = "") {
         let formattedInput = input.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        
         switch formattedInput {
+        case " ":
+            fallthrough
+        case "":
+            write("", color: Color("bogsh"))
         case "hello":
             write("hiiii", color: Color("bogsh"))
         case "hi":
@@ -98,6 +105,11 @@ class BogshController: ObservableObject {
     }
     
     private func write(_ text: String, color: Color) {
-        model.lines.append(BogshLineModel(text, color: color))
+        isResponding = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.model.lines.append(BogshLineModel(text, color: color))
+            self.isResponding = false
+        }
     }
 }

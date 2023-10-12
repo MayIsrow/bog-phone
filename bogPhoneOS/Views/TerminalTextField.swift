@@ -11,19 +11,10 @@ struct TerminalTextField: View {
     @State var placeHolderText: String
     @Binding var text: String
     @State var color: Color
-    @Binding var isInputEnabled: Bool
+    @ObservedObject var bogsh: BogshController
     @State var onCommit: () -> Void
 
-    
     @FocusState private var isFocused: Bool
-    
-    init(_ placeHolderText: String = "", text: Binding<String>, accentColor: Color = .primary, isInputEnabled: Binding<Bool>,onCommit: @escaping () -> Void = {}) {
-        self._placeHolderText = State(initialValue: placeHolderText)
-        self._text = text
-        self._color = State(initialValue: accentColor)
-        self._isInputEnabled = isInputEnabled
-        self._onCommit = State(initialValue: onCommit)
-    }
     
     var body: some View {
         HStack {
@@ -45,12 +36,10 @@ struct TerminalTextField: View {
                 .focused($isFocused)
             
             Button(action: action, label: {
-                if isInputEnabled {
+                if !bogsh.isResponding {
                     Image(systemName: "forward.frame.fill")
                 } else {
-                    withAnimation {
-                        ProgressView()
-                    }
+                    ProgressView()
                 }})
             .buttonStyle(MinimalButtonStyle(color: color))
             .padding([.trailing, .vertical], 10)
@@ -58,23 +47,19 @@ struct TerminalTextField: View {
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(color, lineWidth: 2))
     }
     
-    
     private var buttonPadding:Edge.Set.ArrayLiteralElement {
         !placeHolderText.isEmpty ? [.vertical] : [.leading, .vertical]
     }
     
     private func action() {
-        if  text.replacingOccurrences(of: " ", with: "") != "" {
-            onCommit()
-            isFocused = true
-        }
+        onCommit()
+        isFocused = true
     }
 }
 
-
 #Preview {
-    TerminalTextField("bogsh",text: .constant("Hello World!"), accentColor: Color("accent"), isInputEnabled: .constant(true)) {
-        print("test")
+    TerminalTextField(placeHolderText: "placeholder", text: .constant(""), color: Color("accent"), bogsh: BogshController()) {
+        print("Hello World!")
     }
     .padding()
 }

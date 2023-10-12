@@ -12,7 +12,6 @@ struct BogshView: View {
     @StateObject var bogsh: BogshController = BogshController()
     
     @State private var text = ""
-    @State var isInputEnabled = true
     
     var body: some View {
         VStack {
@@ -26,7 +25,7 @@ struct BogshView: View {
             default:
                 console
             }
-            TerminalTextField("bogsh", text: $text, accentColor: Color("accent"), isInputEnabled: $isInputEnabled) {
+            TerminalTextField(placeHolderText:"bogsh", text: $text, color: Color("accent"), bogsh: bogsh) {
                 withAnimation {
                     writeToConsole(text)
                 }
