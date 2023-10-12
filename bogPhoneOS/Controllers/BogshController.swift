@@ -46,7 +46,8 @@ class BogshController: ObservableObject {
         case "what":
             write("huh?", colorString: "bogsh")
         case "clear":
-            model.lines = []
+            //model.lines = []
+            write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", colorString: "bogsh")
             write("", colorString: "bogsh")
         case "boggers":
             fallthrough
