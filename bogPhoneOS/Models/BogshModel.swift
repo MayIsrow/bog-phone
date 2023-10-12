@@ -39,7 +39,7 @@ struct BogshModel: Decodable {
     
     func saveAppToUserDefaults() {
         do {
-            let encodedData = try JSONEncoder().encode(app.rawValue)
+            let encodedData = try JSONEncoder().encode(app)
             UserDefaults.standard.set(encodedData, forKey: "app")
         } catch {
             print("Error saving app to UserDefaults: \(error)")
