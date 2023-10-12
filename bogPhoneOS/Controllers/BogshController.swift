@@ -10,7 +10,6 @@ import SwiftUI
 class BogshController: ObservableObject {
     @Published var model: BogshModel
     @Published var isResponding = false
-    @Published var app: BogshAppType = .console
     
     init() {
         model = BogshModel()

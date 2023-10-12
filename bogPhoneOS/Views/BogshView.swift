@@ -26,9 +26,14 @@ struct BogshView: View {
                 console
             }
             TerminalTextField(placeHolderText:"bogsh", text: $text, color: Color("accent"), bogsh: bogsh) {
-                withAnimation {
+                if bogsh.model.lines.count == 0 {
+                    withAnimation {
+                        writeToConsole(text)
+                    }
+                } else {
                     writeToConsole(text)
                 }
+                
             }
             .padding([.horizontal, .bottom])
         }
