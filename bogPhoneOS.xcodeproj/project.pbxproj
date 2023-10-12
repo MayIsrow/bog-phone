@@ -18,7 +18,8 @@
 		6C75C83E2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83B2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift */; };
 		6C75C83F2AD4EC4F00FFFE24 /* MinimalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83C2AD4EC4F00FFFE24 /* MinimalModifier.swift */; };
 		6C75C8442AD4F69A00FFFE24 /* BogshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C8432AD4F69A00FFFE24 /* BogshView.swift */; };
-		6CA8B28C2AD60E3C0008074A /* BogshModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B28B2AD60E3C0008074A /* BogshModels.swift */; };
+		6C85475B2AD8306F0073EA66 /* BogshLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C85475A2AD8306F0073EA66 /* BogshLineModel.swift */; };
+		6CA8B28C2AD60E3C0008074A /* BogshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B28B2AD60E3C0008074A /* BogshModel.swift */; };
 		6CA8B2912AD629DD0008074A /* BogshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B2902AD629DD0008074A /* BogshController.swift */; };
 		6CA8B2932AD630BC0008074A /* FrogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B2922AD630BC0008074A /* FrogView.swift */; };
 		6CA8B2952AD6404D0008074A /* HoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B2942AD6404D0008074A /* HoleView.swift */; };
@@ -40,7 +41,8 @@
 		6C75C83B2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalButtonStyle.swift; sourceTree = "<group>"; };
 		6C75C83C2AD4EC4F00FFFE24 /* MinimalModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalModifier.swift; sourceTree = "<group>"; };
 		6C75C8432AD4F69A00FFFE24 /* BogshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshView.swift; sourceTree = "<group>"; };
-		6CA8B28B2AD60E3C0008074A /* BogshModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshModels.swift; sourceTree = "<group>"; };
+		6C85475A2AD8306F0073EA66 /* BogshLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshLineModel.swift; sourceTree = "<group>"; };
+		6CA8B28B2AD60E3C0008074A /* BogshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshModel.swift; sourceTree = "<group>"; };
 		6CA8B2902AD629DD0008074A /* BogshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshController.swift; sourceTree = "<group>"; };
 		6CA8B2922AD630BC0008074A /* FrogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogView.swift; sourceTree = "<group>"; };
 		6CA8B2942AD6404D0008074A /* HoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleView.swift; sourceTree = "<group>"; };
@@ -125,7 +127,8 @@
 		6CA8B28A2AD60E240008074A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6CA8B28B2AD60E3C0008074A /* BogshModels.swift */,
+				6CA8B28B2AD60E3C0008074A /* BogshModel.swift */,
+				6C85475A2AD8306F0073EA66 /* BogshLineModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -230,9 +233,10 @@
 				6CA8B2932AD630BC0008074A /* FrogView.swift in Sources */,
 				6C75C8262AD4EBDF00FFFE24 /* bogPhoneOSApp.swift in Sources */,
 				6C75C8382AD4EC4500FFFE24 /* ContentView.swift in Sources */,
-				6CA8B28C2AD60E3C0008074A /* BogshModels.swift in Sources */,
+				6CA8B28C2AD60E3C0008074A /* BogshModel.swift in Sources */,
 				6CA8B2912AD629DD0008074A /* BogshController.swift in Sources */,
 				6C75C8372AD4EC4500FFFE24 /* TerminalTextField.swift in Sources */,
+				6C85475B2AD8306F0073EA66 /* BogshLineModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
