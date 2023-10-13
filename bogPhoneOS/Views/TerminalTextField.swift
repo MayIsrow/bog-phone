@@ -53,7 +53,6 @@ struct TerminalTextField: View {
     
     private func action() {
         onCommit()
-        isFocused = true
     }
 }
 
