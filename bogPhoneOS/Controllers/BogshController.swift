@@ -177,7 +177,6 @@ class BogshController: ObservableObject {
             Help Menu:
             help - displays this message
             clear - clears the screen
-            bogsh - opens a new bogsh window
             exit - exits the current bogsh window
             logout - calls you an idiot
             smiley - opens the smiley app
