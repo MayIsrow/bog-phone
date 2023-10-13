@@ -63,7 +63,8 @@ class BogshController: ObservableObject {
             "hole": handleHideCommand,
             "hide": handleHideCommand,
             "relax": handleRelaxCommand,
-            "help": handleHelpCommand
+            "help": handleHelpCommand,
+            "stop": handleStopCommand
         ]
         
         if let commandFunction = commandMap[command] {
@@ -81,7 +82,7 @@ class BogshController: ObservableObject {
     
     private func refresh() {
         isVisible = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0001) {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.isVisible = true
         }
     }
@@ -147,7 +148,7 @@ class BogshController: ObservableObject {
     }
     
     private func handleReactorCommand(_ parameters: [String]) {
-        write("I'm so freaking reactor pilled brother")
+        write("I'm so freaking reactor pilled brother", color: .green)
     }
     
     private func handleFrogCommand(_ parameters: [String]) {
@@ -156,7 +157,7 @@ class BogshController: ObservableObject {
     }
     
     private func handleBilboCommand(_ parameters: [String]) {
-        write("What about second breakfast?")
+        write("What about second breakfast?", color: .red)
     }
     
     private func handleHideCommand(_ parameters: [String]) {
@@ -164,7 +165,7 @@ class BogshController: ObservableObject {
     }
     
     private func handleRelaxCommand(_ parameters: [String]) {
-        write("No problem, I've got some chill tunes for ya champ.")
+        write("No problem, I've got some chill tunes for ya, champ.")
         GSAudio.sharedInstance.playSound(soundFileName: "elevator-music.wav")
     }
     
@@ -180,6 +181,7 @@ class BogshController: ObservableObject {
             frog - opens the frog app
             hide - go to a safe place :)
             relax - helps keep you calm!
+            color list - see a list of selectable colors
             ...and others???
             """)
     }
@@ -236,5 +238,9 @@ class BogshController: ObservableObject {
             refresh()
         default:
             write("Color not found: \(parameters[0])")}
+    }
+    
+    private func handleStopCommand(_ parameters: [String]) {
+        GSAudio.sharedInstance.stopAllSounds()
     }
 }

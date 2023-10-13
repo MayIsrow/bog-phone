@@ -83,4 +83,15 @@ class GSAudio: NSObject, AVAudioPlayerDelegate {
         }
     }
 
+    func stopAllSounds() {
+        // Stop all players
+        for player in players.values {
+            player.stop()
+        }
+        
+        // Stop duplicate players
+        for duplicatePlayer in duplicatePlayers {
+            duplicatePlayer.stop()
+        }
+    }
 }
