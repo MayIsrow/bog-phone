@@ -64,7 +64,10 @@ class BogshController: ObservableObject {
             "hide": handleHideCommand,
             "relax": handleRelaxCommand,
             "help": handleHelpCommand,
-            "stop": handleStopCommand
+            "stop": handleStopCommand,
+            "🌈": handleRainbowCommand,
+            "🏳️‍🌈": handleRainbowCommand,
+            "🏳️‍⚧️": handleTransCommand
         ]
         
         if let commandFunction = commandMap[command] {
@@ -242,5 +245,13 @@ class BogshController: ObservableObject {
     
     private func handleStopCommand(_ parameters: [String]) {
         GSAudio.sharedInstance.stopAllSounds()
+    }
+    
+    private func handleRainbowCommand(_ parameters: [String]) {
+        respond("color list")
+    }
+            
+    private func handleTransCommand(_ parameters: [String]) {
+        respond("trans rights")
     }
 }
