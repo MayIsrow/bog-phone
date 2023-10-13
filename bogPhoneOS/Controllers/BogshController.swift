@@ -10,6 +10,7 @@ import SwiftUI
 class BogshController: ObservableObject {
     @Published var model: BogshModel
     @Published var isResponding = false
+    @Published var isVisible = true
     
     init() {
         model = BogshModel()
@@ -18,10 +19,10 @@ class BogshController: ObservableObject {
     
     func push(_ input: String) {
         let newInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
-        write(newInput, color: .accent)
+        write(newInput, color: model.userColor)
         
         isResponding = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.respond(newInput)
             self.isResponding = false
         }
@@ -38,6 +39,7 @@ class BogshController: ObservableObject {
             "": handleEmptyCommand,
             "hello": handleHelloCommand,
             "hi": handleHiCommand,
+            "color": handleColorCommand,
             "huh": handleHuhCommand,
             "what": handleWhatCommand,
             "clear": handleClearCommand,
@@ -73,56 +75,62 @@ class BogshController: ObservableObject {
     
     // MARK: - Helper Functions
     
-    private func write(_ text: String, color: BogshColorType) {
+    private func write(_ text: String, color: BogshColorType = .bogsh) {
         self.model.lines.append(BogshLineModel(text, color: color))
     }
     
+    private func refresh() {
+        isVisible = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0001) {
+            self.isVisible = true
+        }
+    }
     
     // MARK: - Command Handlers
     
     private func handleEmptyCommand(_ parameters: [String]) {
-        write("", color: .bogsh)
+        write("")
     }
     
     private func handleHelloCommand(_ parameters: [String]) {
-        write("hiiii", color: .bogsh)
+        write("hiiii")
     }
     
     private func handleHiCommand(_ parameters: [String]) {
-        write("hello", color: .bogsh)
+        write("hello")
     }
     
     private func handleHuhCommand(_ parameters: [String]) {
-        write("what?", color: .bogsh)
+        write("what?")
     }
     
     private func handleWhatCommand(_ parameters: [String]) {
-        write("huh?", color: .bogsh)
+        write("huh?")
     }
     
     private func handleClearCommand(_ parameters: [String]) {
-        write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", color: .bogsh)
-        write("", color: .bogsh)
+        write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        write("")
     }
     
     private func handleBoggersCommand(_ parameters: [String]) {
-        write("BogChamp 😲", color: .bogsh)
+        write("BogChamp 😲")
     }
     
     private func handleLogoutCommand(_ parameters: [String]) {
-        write("logout? try bogout, idiot", color: .bogsh)
+        write("logout? try bogout, idiot")
     }
     
     private func handleBogoutCommand(_ parameters: [String]) {
-        write("no.", color: .bogsh)
+        write("no.")
     }
     
     private func handleSadCommand(_ parameters: [String]) {
-        write("im sorry :(", color: .bogsh)
+        write("im sorry :(")
     }
     
     private func handleBogshCommand(_ parameters: [String]) {
-        write("Coming soon!", color: .bogsh)
+        write("Coming soon!")
     }
     
     private func handleSmileyCommand(_ parameters: [String]) {
@@ -139,16 +147,16 @@ class BogshController: ObservableObject {
     }
     
     private func handleReactorCommand(_ parameters: [String]) {
-        write("I'm so freaking reactor pilled brother", color: .bogsh)
+        write("I'm so freaking reactor pilled brother")
     }
     
     private func handleFrogCommand(_ parameters: [String]) {
-        write("🐸", color: .bogsh)
+        write("🐸")
         model.app = .frog
     }
     
     private func handleBilboCommand(_ parameters: [String]) {
-        write("What about second breakfast?", color: .bogsh)
+        write("What about second breakfast?")
     }
     
     private func handleHideCommand(_ parameters: [String]) {
@@ -156,7 +164,7 @@ class BogshController: ObservableObject {
     }
     
     private func handleRelaxCommand(_ parameters: [String]) {
-        write("No problem, I've got some chill tunes for ya champ.", color: .bogsh)
+        write("No problem, I've got some chill tunes for ya champ.")
         GSAudio.sharedInstance.playSound(soundFileName: "elevator-music.wav")
     }
     
@@ -173,6 +181,60 @@ class BogshController: ObservableObject {
             hide - go to a safe place :)
             relax - helps keep you calm!
             ...and others???
-            """, color: .bogsh)
+            """)
+    }
+    
+    private func handleColorCommand(_ parameters: [String]) {
+        if parameters.count == 0 {
+            write("Expected parameter. Ex: 'color red'. Type 'color list' for a list of available colors")
+            return
+        }
+        
+        switch(parameters[0]) {
+        case "list":
+            write("Listing color command options. Tap a command in the console to copy it!")
+            write("color default", color: .accent)
+            write("color red", color: .red)
+            write("color orange", color: .orange)
+            write("color yellow", color: .yellow)
+            write("color green", color: .green)
+            write("color blue", color: .blue)
+            write("color indigo", color: .indigo)
+            write("color violet", color: .violet)
+            write("color pink", color: .pink)
+            
+            
+        case "red":
+            model.userColor = .red
+            refresh()
+        case "orange":
+            model.userColor = .orange
+            refresh()
+        case "yellow":
+            model.userColor = .yellow
+            refresh()
+        case "green":
+            model.userColor = .green
+            refresh()
+        case "blue":
+            model.userColor = .blue
+            refresh()
+        case "indigo":
+            model.userColor = .indigo
+            refresh()
+        case "violet":
+            model.userColor = .violet
+            refresh()
+        case "pink":
+            model.userColor = .pink
+            refresh()
+        
+        case "default":
+            fallthrough
+        case "reset":
+            model.userColor = .accent
+            refresh()
+        default:
+            write("Color not found: \(parameters[0])")}
     }
 }

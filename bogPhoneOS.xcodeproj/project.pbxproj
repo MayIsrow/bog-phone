@@ -13,7 +13,6 @@
 		6C75C82A2AD4EBE100FFFE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C75C8292AD4EBE100FFFE24 /* Assets.xcassets */; };
 		6C75C82E2AD4EBE100FFFE24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C75C82D2AD4EBE100FFFE24 /* Preview Assets.xcassets */; };
 		6C75C8372AD4EC4500FFFE24 /* TerminalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C8352AD4EC4500FFFE24 /* TerminalTextField.swift */; };
-		6C75C8382AD4EC4500FFFE24 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C8362AD4EC4500FFFE24 /* ContentView.swift */; };
 		6C75C83D2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83A2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift */; };
 		6C75C83E2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83B2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift */; };
 		6C75C83F2AD4EC4F00FFFE24 /* MinimalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83C2AD4EC4F00FFFE24 /* MinimalModifier.swift */; };
@@ -38,7 +37,6 @@
 		6C75C82B2AD4EBE100FFFE24 /* bogPhoneOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bogPhoneOS.entitlements; sourceTree = "<group>"; };
 		6C75C82D2AD4EBE100FFFE24 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6C75C8352AD4EC4500FFFE24 /* TerminalTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalTextField.swift; sourceTree = "<group>"; };
-		6C75C8362AD4EC4500FFFE24 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6C75C83A2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalTextFieldStyle.swift; sourceTree = "<group>"; };
 		6C75C83B2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalButtonStyle.swift; sourceTree = "<group>"; };
 		6C75C83C2AD4EC4F00FFFE24 /* MinimalModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalModifier.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				6C75C8352AD4EC4500FFFE24 /* TerminalTextField.swift */,
-				6C75C8362AD4EC4500FFFE24 /* ContentView.swift */,
 				6C75C8432AD4F69A00FFFE24 /* BogshView.swift */,
 				6C43AF4E2AD5120200452CA7 /* SmileyView.swift */,
 				6CA8B2922AD630BC0008074A /* FrogView.swift */,
@@ -247,7 +244,6 @@
 				6C75C83E2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift in Sources */,
 				6CA8B2932AD630BC0008074A /* FrogView.swift in Sources */,
 				6C75C8262AD4EBDF00FFFE24 /* bogPhoneOSApp.swift in Sources */,
-				6C75C8382AD4EC4500FFFE24 /* ContentView.swift in Sources */,
 				6CA8B28C2AD60E3C0008074A /* BogshModel.swift in Sources */,
 				6CF18AD82AD8514600C0B068 /* BogshColorType.swift in Sources */,
 				6CA8B2912AD629DD0008074A /* BogshController.swift in Sources */,

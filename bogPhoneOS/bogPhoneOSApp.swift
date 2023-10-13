@@ -11,7 +11,7 @@ import SwiftUI
 struct bogPhoneOSApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BogshView()
         }
     }
 }

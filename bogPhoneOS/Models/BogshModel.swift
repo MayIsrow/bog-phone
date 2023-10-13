@@ -20,6 +20,11 @@ struct BogshModel {
             saveLinesToUserDefaults()
         }
     }
+    var userColor: BogshColorType = .accent {
+        didSet {
+            saveUserColorToUserDefaults()
+        }
+    }
     
     func saveLinesToUserDefaults() {
         do {
@@ -39,6 +44,15 @@ struct BogshModel {
         }
     }
     
+    func saveUserColorToUserDefaults() {
+        do {
+            let encodedData = try JSONEncoder().encode(userColor)
+            UserDefaults.standard.set(encodedData, forKey: "userColor")
+        } catch {
+            print("Error saving app to UserDefaults: \(error)")
+        }
+    }
+    
     mutating func loadDataFromUserDefaults() {
         if let savedData = UserDefaults.standard.data(forKey: "savedLines") {
             do {
@@ -51,6 +65,14 @@ struct BogshModel {
         if let savedData = UserDefaults.standard.data(forKey: "app") {
             do {
                 app = try JSONDecoder().decode(BogshAppType.self, from: savedData)
+            } catch {
+                print("Error loading app from UserDefaults: \(error)")
+            }
+        }
+        
+        if let savedData = UserDefaults.standard.data(forKey: "userColor") {
+            do {
+                userColor = try JSONDecoder().decode(BogshColorType.self, from: savedData)
             } catch {
                 print("Error loading app from UserDefaults: \(error)")
             }
