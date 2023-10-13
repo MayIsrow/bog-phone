@@ -19,9 +19,9 @@ struct BogshView: View {
                 ScrollViewReader { scrollView in
                     HStack {
                         Image(systemName: "microbe.circle")
-                            .modifier(MinimalModifier(.title, color: Color(bogsh.model.userColor.rawValue)))
+                            .modifier(MinimalModifier(.title3, color: Color(bogsh.model.userColor.rawValue)))
                         Text("bogPhoneOS")
-                            .modifier(MinimalModifier(.title, color: Color(bogsh.model.userColor.rawValue)))
+                            .modifier(MinimalModifier(.title3, color: Color(bogsh.model.userColor.rawValue)))
                     }
                     
                     switch bogsh.model.app {
