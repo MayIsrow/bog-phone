@@ -23,7 +23,6 @@ struct BogshView: View {
                         Text("bogPhoneOS")
                             .modifier(MinimalModifier(.title3, color: Color(bogsh.model.userColor.rawValue)))
                     }
-                    
                     switch bogsh.model.app {
                     case .smiley:
                         SmileyView()
@@ -33,7 +32,6 @@ struct BogshView: View {
                         HoleView()
                     default:
                         VStack {
-                            
                             ScrollView {
                                 ForEach(bogsh.model.lines, id: \.self) { line in
                                     HStack {
@@ -60,7 +58,6 @@ struct BogshView: View {
                             }
                         }
                     }
-                    
                     TerminalTextField(placeHolderText:"bogsh", text: $text, color: Color(bogsh.model.userColor.rawValue), bogsh: bogsh) {
                         if bogsh.model.lines.count == 0 {
                             withAnimation {
@@ -79,7 +76,6 @@ struct BogshView: View {
             }
         }
     }
-    
     private func writeToConsole(_ text: String) {
         self.text = ""
         bogsh.push("\(text)")
