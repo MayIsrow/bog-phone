@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import AVFAudio
 
 class BogshController: ObservableObject {
     @Published var model: BogshModel
     @Published var isResponding = false
     @Published var isVisible = true
+    
+    private let speechSynthesizer = AVSpeechSynthesizer()
     
     init() {
         model = BogshModel()
@@ -67,7 +70,8 @@ class BogshController: ObservableObject {
             "stop": handleStopCommand,
             "🌈": handleRainbowCommand,
             "🏳️‍🌈": handleRainbowCommand,
-            "🏳️‍⚧️": handleTransCommand
+            "🏳️‍⚧️": handleTransCommand,
+            "speak": handleSpeakCommand
         ]
         
         if let commandFunction = commandMap[command] {
@@ -184,6 +188,7 @@ class BogshController: ObservableObject {
             hide - go to a safe place :)
             relax - helps keep you calm!
             color list - see a list of selectable colors
+            speak - make one of the little guys in your phone say something
             ...and others???
             """)
     }
@@ -252,5 +257,39 @@ class BogshController: ObservableObject {
             
     private func handleTransCommand(_ parameters: [String]) {
         respond("trans rights")
+    }
+    
+    private func handleSpeakCommand(_ parameters: [String]) {
+        if parameters.count == 0 {
+            write("Expected parameter. Ex: 'speak Hello World!'")
+            return
+        }
+        
+        if parameters[0] == "help" {
+            write("Go ahead. Type 'speak' followed with what you want one of the little guys living inside of your phone to say. Tap the example to copy it to your console:")
+            write("speak hello world!")
+        } else {
+            var sentence = ""
+            
+            for word in parameters {
+                sentence += "\(word) "
+            }
+            
+            
+            let utterance = AVSpeechUtterance(string: sentence)
+            
+            utterance.pitchMultiplier = Float.random(in: 0.1...0.75)
+            utterance.rate = Float.random(in: 0.1...0.75)
+            utterance.volume = 0.35
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            
+            if !speechSynthesizer.isSpeaking  {
+                write("One of the tiny little bog guys living inside of your phone says \"\(sentence)\"")
+                speechSynthesizer.speak(utterance)
+            }
+            
+            
+
+        }
     }
 }

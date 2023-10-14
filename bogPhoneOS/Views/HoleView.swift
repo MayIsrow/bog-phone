@@ -33,6 +33,7 @@ struct HoleView: View {
         .onAppear {
             utterance.pitchMultiplier = 0.3
             utterance.rate = 0.4
+            utterance.volume = 0.35
             utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         }
     }
