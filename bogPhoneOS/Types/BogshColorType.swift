@@ -10,15 +10,15 @@ import Foundation
 enum BogshColorType: String, Decodable, Encodable {
     case bogsh
     case accent
-    case black
-    case white
-    case red
-    case orange
-    case yellow
-    case green
-    case blue
-    case indigo
-    case violet
-    case pink
+    case black = "bblack"
+    case white = "bwhite"
+    case red = "bred"
+    case orange = "borange"
+    case yellow = "byellow"
+    case green = "bgreen"
+    case blue = "bblue"
+    case indigo = "bindigo"
+    case violet = "bviolet"
+    case pink = "bpink"
     
 }
