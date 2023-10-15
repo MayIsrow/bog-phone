@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BogshLineModel: Identifiable, Decodable, Encodable, Hashable {
+struct BogshLineModel: Identifiable, Codable, Hashable {
     private(set) var id = UUID()
     var text: String
     var color: BogshColorType

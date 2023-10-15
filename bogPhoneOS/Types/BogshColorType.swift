@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum BogshColorType: String, Decodable, Encodable {
+enum BogshColorType: String, Codable {
     case bogsh
     case accent
     case black = "bblack"
