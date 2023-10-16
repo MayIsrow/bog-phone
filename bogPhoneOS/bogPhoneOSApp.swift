@@ -11,7 +11,8 @@ import SwiftUI
 struct bogPhoneOSApp: App {
     var body: some Scene {
         WindowGroup {
-            BogshView()
+            LockScreen()
         }
+        .modelContainer(for: User.self)
     }
 }

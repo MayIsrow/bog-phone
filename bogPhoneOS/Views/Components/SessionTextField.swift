@@ -1,17 +1,16 @@
 //
-//  TerminalTextField.swift
-//  Cyberpunk Terminal
+//  SessionTextField.swift
+//  bogPhoneOS
 //
-//  Created by May Isrow on 10/8/23.
+//  Created by May Isrow on 10/16/23.
 //
 
 import SwiftUI
 
-struct TerminalTextField: View {
+struct SessionTextField: View {
     @State var placeHolderText: String
     @Binding var text: String
-    @State var color: Color
-    @ObservedObject var bogsh: BogshController
+    @ObservedObject var sessionController: SessionController
     @State var onCommit: () -> Void
 
     @FocusState private var isFocused: Bool
@@ -22,29 +21,29 @@ struct TerminalTextField: View {
                 HStack {
                     if !placeHolderText.isEmpty {
                         Text(placeHolderText)
-                            .modifier(MinimalModifier(color:color))
+                            .modifier(MinimalModifier())
                             .padding([.leading, .vertical], 10)
                     }
                     
                     Image(systemName: "chevron.right")
                         .padding(buttonPadding, 10)
                 }})
-            .buttonStyle(MinimalButtonStyle(color: color))
+            .buttonStyle(MinimalButtonStyle())
             
             TextField("", text: $text)
-                .textFieldStyle(MinimalTextFieldStyle(color: color))
+                .textFieldStyle(MinimalTextFieldStyle())
                 .focused($isFocused)
             
             Button(action: action, label: {
-                if !bogsh.isResponding {
+                if !sessionController.session.isResponding {
                     Image(systemName: "forward.frame.fill")
                 } else {
                     ProgressView()
                 }})
-            .buttonStyle(MinimalButtonStyle(color: color))
+            .buttonStyle(MinimalButtonStyle())
             .padding([.trailing, .vertical], 10)
         }
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(color, lineWidth: 2))
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(sessionController.preferences.color.rawValue), lineWidth: 2))
     }
     
     private var buttonPadding:Edge.Set.ArrayLiteralElement {
@@ -52,14 +51,14 @@ struct TerminalTextField: View {
     }
     
     private func action() {
-        onCommit()
+        if !sessionController.session.isResponding {
+            onCommit()
+        }
     }
 }
 
+/*
 #Preview {
-    TerminalTextField(placeHolderText: "placeholder", text: .constant(""), color: Color("accent"), bogsh: BogshController()) {
-        print("Hello World!")
-    }
-    .padding()
+    SessionTextView()
 }
-
+*/

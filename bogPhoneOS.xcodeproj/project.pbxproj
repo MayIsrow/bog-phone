@@ -12,24 +12,25 @@
 		6C75C8262AD4EBDF00FFFE24 /* bogPhoneOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C8252AD4EBDF00FFFE24 /* bogPhoneOSApp.swift */; };
 		6C75C82A2AD4EBE100FFFE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C75C8292AD4EBE100FFFE24 /* Assets.xcassets */; };
 		6C75C82E2AD4EBE100FFFE24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C75C82D2AD4EBE100FFFE24 /* Preview Assets.xcassets */; };
-		6C75C8372AD4EC4500FFFE24 /* TerminalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C8352AD4EC4500FFFE24 /* TerminalTextField.swift */; };
 		6C75C83D2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83A2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift */; };
 		6C75C83E2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83B2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift */; };
 		6C75C83F2AD4EC4F00FFFE24 /* MinimalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C83C2AD4EC4F00FFFE24 /* MinimalModifier.swift */; };
-		6C75C8442AD4F69A00FFFE24 /* BogshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C75C8432AD4F69A00FFFE24 /* BogshView.swift */; };
 		6C85475B2AD8306F0073EA66 /* BogshLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C85475A2AD8306F0073EA66 /* BogshLineModel.swift */; };
 		6C94975D2ADD90FE008409A7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94975C2ADD90FE008409A7 /* User.swift */; };
 		6C94975F2ADD9449008409A7 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94975E2ADD9449008409A7 /* Preferences.swift */; };
 		6C9497612ADD95EE008409A7 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9497602ADD95EE008409A7 /* Session.swift */; };
 		6C9497632ADD970F008409A7 /* ConsoleLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9497622ADD970F008409A7 /* ConsoleLine.swift */; };
+		6C9497672ADD9AB9008409A7 /* LockScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9497662ADD9AB9008409A7 /* LockScreen.swift */; };
+		6C9497862ADDACF2008409A7 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9497852ADDACF2008409A7 /* SessionController.swift */; };
+		6C94978A2ADDB00A008409A7 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9497892ADDB00A008409A7 /* SessionView.swift */; };
+		6C94978D2ADDB522008409A7 /* SessionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C94978C2ADDB522008409A7 /* SessionTextField.swift */; };
 		6CA8B28C2AD60E3C0008074A /* BogshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B28B2AD60E3C0008074A /* BogshModel.swift */; };
-		6CA8B2912AD629DD0008074A /* BogshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B2902AD629DD0008074A /* BogshController.swift */; };
 		6CA8B2932AD630BC0008074A /* FrogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B2922AD630BC0008074A /* FrogView.swift */; };
 		6CA8B2952AD6404D0008074A /* HoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA8B2942AD6404D0008074A /* HoleView.swift */; };
 		6CB74D372AD747F000036327 /* frog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6CB74D362AD747F000036327 /* frog.mp3 */; };
 		6CD0B5212AD7887D006162FB /* elevator-music.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6CD0B5202AD7887D006162FB /* elevator-music.wav */; };
 		6CF18AD82AD8514600C0B068 /* BogshColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF18AD72AD8514600C0B068 /* BogshColorType.swift */; };
-		6CF18ADA2AD8516D00C0B068 /* BogshAppType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF18AD92AD8516D00C0B068 /* BogshAppType.swift */; };
+		6CF18ADA2AD8516D00C0B068 /* AppStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF18AD92AD8516D00C0B068 /* AppStateType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,24 +41,25 @@
 		6C75C8292AD4EBE100FFFE24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C75C82B2AD4EBE100FFFE24 /* bogPhoneOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bogPhoneOS.entitlements; sourceTree = "<group>"; };
 		6C75C82D2AD4EBE100FFFE24 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		6C75C8352AD4EC4500FFFE24 /* TerminalTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalTextField.swift; sourceTree = "<group>"; };
 		6C75C83A2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalTextFieldStyle.swift; sourceTree = "<group>"; };
 		6C75C83B2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalButtonStyle.swift; sourceTree = "<group>"; };
 		6C75C83C2AD4EC4F00FFFE24 /* MinimalModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalModifier.swift; sourceTree = "<group>"; };
-		6C75C8432AD4F69A00FFFE24 /* BogshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshView.swift; sourceTree = "<group>"; };
 		6C85475A2AD8306F0073EA66 /* BogshLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshLineModel.swift; sourceTree = "<group>"; };
 		6C94975C2ADD90FE008409A7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6C94975E2ADD9449008409A7 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		6C9497602ADD95EE008409A7 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		6C9497622ADD970F008409A7 /* ConsoleLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLine.swift; sourceTree = "<group>"; };
+		6C9497662ADD9AB9008409A7 /* LockScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreen.swift; sourceTree = "<group>"; };
+		6C9497852ADDACF2008409A7 /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
+		6C9497892ADDB00A008409A7 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		6C94978C2ADDB522008409A7 /* SessionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTextField.swift; sourceTree = "<group>"; };
 		6CA8B28B2AD60E3C0008074A /* BogshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshModel.swift; sourceTree = "<group>"; };
-		6CA8B2902AD629DD0008074A /* BogshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshController.swift; sourceTree = "<group>"; };
 		6CA8B2922AD630BC0008074A /* FrogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogView.swift; sourceTree = "<group>"; };
 		6CA8B2942AD6404D0008074A /* HoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleView.swift; sourceTree = "<group>"; };
 		6CB74D362AD747F000036327 /* frog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frog.mp3; sourceTree = "<group>"; };
 		6CD0B5202AD7887D006162FB /* elevator-music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "elevator-music.wav"; sourceTree = "<group>"; };
 		6CF18AD72AD8514600C0B068 /* BogshColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshColorType.swift; sourceTree = "<group>"; };
-		6CF18AD92AD8516D00C0B068 /* BogshAppType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BogshAppType.swift; sourceTree = "<group>"; };
+		6CF18AD92AD8516D00C0B068 /* AppStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,11 +118,12 @@
 		6C75C8342AD4EC4500FFFE24 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6C75C8352AD4EC4500FFFE24 /* TerminalTextField.swift */,
-				6C75C8432AD4F69A00FFFE24 /* BogshView.swift */,
+				6C94978B2ADDB504008409A7 /* Components */,
 				6C43AF4E2AD5120200452CA7 /* SmileyView.swift */,
 				6CA8B2922AD630BC0008074A /* FrogView.swift */,
 				6CA8B2942AD6404D0008074A /* HoleView.swift */,
+				6C9497662ADD9AB9008409A7 /* LockScreen.swift */,
+				6C9497892ADDB00A008409A7 /* SessionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,6 +149,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		6C94978B2ADDB504008409A7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6C94978C2ADDB522008409A7 /* SessionTextField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		6CA8B28A2AD60E240008074A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,8 +169,8 @@
 		6CA8B28F2AD629C40008074A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6CA8B2902AD629DD0008074A /* BogshController.swift */,
 				6C28B8A02AD74C3D009A0A37 /* GSAudio.swift */,
+				6C9497852ADDACF2008409A7 /* SessionController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,7 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				6CF18AD72AD8514600C0B068 /* BogshColorType.swift */,
-				6CF18AD92AD8516D00C0B068 /* BogshAppType.swift */,
+				6CF18AD92AD8516D00C0B068 /* AppStateType.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -259,23 +270,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C28B8A12AD74C3D009A0A37 /* GSAudio.swift in Sources */,
-				6C75C8442AD4F69A00FFFE24 /* BogshView.swift in Sources */,
+				6C94978A2ADDB00A008409A7 /* SessionView.swift in Sources */,
 				6C75C83F2AD4EC4F00FFFE24 /* MinimalModifier.swift in Sources */,
-				6CF18ADA2AD8516D00C0B068 /* BogshAppType.swift in Sources */,
+				6C94978D2ADDB522008409A7 /* SessionTextField.swift in Sources */,
+				6CF18ADA2AD8516D00C0B068 /* AppStateType.swift in Sources */,
 				6C94975D2ADD90FE008409A7 /* User.swift in Sources */,
 				6C75C83D2AD4EC4F00FFFE24 /* MinimalTextFieldStyle.swift in Sources */,
+				6C9497672ADD9AB9008409A7 /* LockScreen.swift in Sources */,
 				6C94975F2ADD9449008409A7 /* Preferences.swift in Sources */,
 				6C43AF4F2AD5120200452CA7 /* SmileyView.swift in Sources */,
 				6C9497612ADD95EE008409A7 /* Session.swift in Sources */,
 				6CA8B2952AD6404D0008074A /* HoleView.swift in Sources */,
 				6C75C83E2AD4EC4F00FFFE24 /* MinimalButtonStyle.swift in Sources */,
+				6C9497862ADDACF2008409A7 /* SessionController.swift in Sources */,
 				6CA8B2932AD630BC0008074A /* FrogView.swift in Sources */,
 				6C75C8262AD4EBDF00FFFE24 /* bogPhoneOSApp.swift in Sources */,
 				6CA8B28C2AD60E3C0008074A /* BogshModel.swift in Sources */,
 				6CF18AD82AD8514600C0B068 /* BogshColorType.swift in Sources */,
-				6CA8B2912AD629DD0008074A /* BogshController.swift in Sources */,
 				6C9497632ADD970F008409A7 /* ConsoleLine.swift in Sources */,
-				6C75C8372AD4EC4500FFFE24 /* TerminalTextField.swift in Sources */,
 				6C85475B2AD8306F0073EA66 /* BogshLineModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,19 +10,14 @@ import SwiftUI
 struct MinimalModifier: ViewModifier {
     @State var textStyle: Font.TextStyle
     @State var design: Font.Design
-    @State var color: Color
     
-    init(_ textStyle: Font.TextStyle = .body, design: Font.Design = .monospaced, color: Color = .primary) {
+    init(_ textStyle: Font.TextStyle = .body, design: Font.Design = .monospaced) {
         self._textStyle = State(initialValue: textStyle)
         self._design = State(initialValue: design)
-        self._color = State(initialValue: color)
     }
     
     func body(content: Content) -> some View {
         content
             .font(.system(textStyle, design: design))
-            .foregroundStyle(color)
-            .tint(color)
-            .accentColor(color)
     }
 }

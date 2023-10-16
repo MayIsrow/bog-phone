@@ -1,33 +1,38 @@
 //
-//  BogshController.swift
+//  ConsoleController.swift
 //  bogPhoneOS
 //
-//  Created by May Isrow on 10/10/23.
+//  Created by May Isrow on 10/16/23.
 //
 
-import SwiftUI
+import Foundation
 import AVFAudio
 
-class BogshController: ObservableObject {
-    @Published var model: BogshModel
-    @Published var isResponding = false
-    @Published var isVisible = true
+class SessionController: ObservableObject {
+    
+    @Published var session: Session
+    
+    @Published var preferences: Preferences
     
     private let speechSynthesizer = AVSpeechSynthesizer()
     
-    init() {
-        model = BogshModel()
-        model.loadDataFromUserDefaults()
+    init(session: Session, preferences: Preferences) {
+        self.session = session
+        self.preferences = preferences
     }
     
     func push(_ input: String) {
-        let newInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
-        write(newInput, color: model.userColor)
+        if session.isResponding {
+            return
+        }
         
-        isResponding = true
+        let newInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
+        write(newInput, color: preferences.color)
+        
+        session.isResponding = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.respond(newInput)
-            self.isResponding = false
+            self.session.isResponding = false
         }
     }
     
@@ -84,13 +89,13 @@ class BogshController: ObservableObject {
     // MARK: - Helper Functions
     
     private func write(_ text: String, color: BogshColorType = .bogsh) {
-        self.model.lines.append(BogshLineModel(text, color: color))
+        session.consoleLines.append(ConsoleLine(text: text, color: color))
     }
     
     private func refresh() {
-        isVisible = false
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.isVisible = true
+        session.isVisible = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.session.isVisible = true
         }
     }
     
@@ -142,16 +147,16 @@ class BogshController: ObservableObject {
     }
     
     private func handleSmileyCommand(_ parameters: [String]) {
-        model.app = .smiley
+        session.state = .smiley
     }
     
     private func handleKillCommand(_ parameters: [String]) {
-        model.lines = []
-        model.app = .console
+        session.consoleLines = []
+        session.state = .console
     }
     
     private func handleExitCommand(_ parameters: [String]) {
-        model.app = .console
+        session.state = .console
     }
     
     private func handleReactorCommand(_ parameters: [String]) {
@@ -160,7 +165,7 @@ class BogshController: ObservableObject {
     
     private func handleFrogCommand(_ parameters: [String]) {
         write("🐸")
-        model.app = .frog
+        session.state = .frog
     }
     
     private func handleBilboCommand(_ parameters: [String]) {
@@ -168,7 +173,7 @@ class BogshController: ObservableObject {
     }
     
     private func handleHideCommand(_ parameters: [String]) {
-        model.app = .hole
+        session.state = .hole
     }
     
     private func handleRelaxCommand(_ parameters: [String]) {
@@ -214,34 +219,34 @@ class BogshController: ObservableObject {
             
             
         case "red":
-            model.userColor = .red
+            preferences.color = .red
             refresh()
         case "orange":
-            model.userColor = .orange
+            preferences.color = .orange
             refresh()
         case "yellow":
-            model.userColor = .yellow
+            preferences.color = .yellow
             refresh()
         case "green":
-            model.userColor = .green
+            preferences.color = .green
             refresh()
         case "blue":
-            model.userColor = .blue
+            preferences.color = .blue
             refresh()
         case "indigo":
-            model.userColor = .indigo
+            preferences.color = .indigo
             refresh()
         case "violet":
-            model.userColor = .violet
+            preferences.color = .violet
             refresh()
         case "pink":
-            model.userColor = .pink
+            preferences.color = .pink
             refresh()
         
         case "default":
             fallthrough
         case "reset":
-            model.userColor = .accent
+            preferences.color = .accent
             refresh()
         default:
             write("Color not found: \(parameters[0])")}
@@ -287,9 +292,6 @@ class BogshController: ObservableObject {
                 write("One of the tiny little bog guys living inside of your phone says \"\(sentence)\"")
                 speechSynthesizer.speak(utterance)
             }
-            
-            
-
         }
     }
 }

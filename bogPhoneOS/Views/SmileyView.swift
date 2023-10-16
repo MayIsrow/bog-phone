@@ -12,7 +12,7 @@ struct SmileyView: View {
         ZStack {
             Image(systemName: "smiley")
                 .resizable()
-                .modifier(MinimalModifier(.largeTitle, color: .yellow))
+                .modifier(MinimalModifier(.largeTitle))
                 .padding()
         }
     }

@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct MinimalTextFieldStyle: TextFieldStyle {
-    @State var color: Color = .primary
     
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
-            .modifier(MinimalModifier(color: color))
+            .modifier(MinimalModifier())
             .background(.clear)
     }
 }

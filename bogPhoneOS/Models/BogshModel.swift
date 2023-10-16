@@ -10,7 +10,7 @@ import Foundation
 
 struct BogshModel {
 
-    var app: BogshAppType = .console {
+    var app: AppStateType = .console {
         didSet {
             saveAppToUserDefaults()
         }
@@ -64,7 +64,7 @@ struct BogshModel {
         
         if let savedData = UserDefaults.standard.data(forKey: "app") {
             do {
-                app = try JSONDecoder().decode(BogshAppType.self, from: savedData)
+                app = try JSONDecoder().decode(AppStateType.self, from: savedData)
             } catch {
                 print("Error loading app from UserDefaults: \(error)")
             }

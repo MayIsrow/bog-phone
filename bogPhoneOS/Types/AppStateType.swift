@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum BogshAppType: String, Codable {
-    case console
+enum AppStateType: String, Codable {
+    case console = "console"
     case smiley
     case frog
     case hole

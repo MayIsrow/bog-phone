@@ -9,15 +9,15 @@ import SwiftData
 import Foundation
 
 @Model final class User {
-    @Attribute(.unique) var id = UUID()
+    @Attribute(.unique) var id: UUID
     
     var preferences: Preferences
     
-    var sessions: [Session] = []
+    var sessions: [Session]
     
-    init(id: UUID = UUID(), preferences: Preferences, sessions: [Session]) {
-        self.id = id
+    init(preferences: Preferences) {
+        self.id = UUID()
         self.preferences = preferences
-        self.sessions = sessions
+        self.sessions = [Session()]
     }
 }

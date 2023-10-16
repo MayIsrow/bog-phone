@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct MinimalButtonStyle: ButtonStyle {
-    @State var color: Color = .primary
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .modifier(MinimalModifier(.headline, color: color))
+            .modifier(MinimalModifier(.headline))
     }
 }
 
