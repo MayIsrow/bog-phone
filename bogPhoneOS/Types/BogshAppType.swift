@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum BogshAppType: String, Decodable, Encodable {
+enum BogshAppType: String, Codable {
     case console
     case smiley
     case frog
