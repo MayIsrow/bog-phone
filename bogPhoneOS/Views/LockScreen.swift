@@ -15,25 +15,46 @@ struct LockScreen: View {
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
-        VStack {
-            if users.isEmpty {
-                HStack {
-                    Text("Creating guest user")
-                        .padding()
-                    ProgressView()
-                }
-                .onAppear {
-                    modelContext.insert(User(preferences: Preferences(name: "guest")))
-                }
-            } else {
-                if let user = users.first {
-                    if let session = user.sessions.first {
-                        SessionView(sessionController: SessionController(session: session, preferences: user.preferences))
+        NavigationStack {
+            VStack {
+                Text("bogPhoneOS")
+                    .modifier(MinimalModifier(.title3))
+                    .foregroundStyle(Color(BogshColorType.accent.rawValue))
+                
+                Spacer()
+                
+                if users.isEmpty {
+                    HStack {
+                        Text("Creating guest user")
+                            .padding()
+                        ProgressView()
+                    }
+                    .onAppear {
+                        modelContext.insert(User(preferences: Preferences(name: "guest", emoji: "🐸")))
+                    }
+                } else {
+                    HStack {
+                        ForEach(users) { user in
+                            if let firstSession = user.sessions.first{
+                                NavigationLink {
+                                    SessionView(sessionController: SessionController(session: firstSession, preferences: user.preferences))
+                                } label: {
+                                    VStack {
+                                        Text(user.preferences.emoji)
+                                        Text(user.preferences.name)
+                                            .foregroundStyle(Color(user.preferences.color.rawValue))
+                                    }
+                                    .padding()
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(user.preferences.color.rawValue), lineWidth: 2))
+                                }
+                            }
+                        }
                     }
                 }
+                Spacer()
             }
-            EmptyView()
         }
+
     }
 }
 

@@ -92,13 +92,6 @@ class SessionController: ObservableObject {
         session.consoleLines.append(ConsoleLine(text: text, color: color))
     }
     
-    private func refresh() {
-        session.isVisible = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.session.isVisible = true
-        }
-    }
-    
     // MARK: - Command Handlers
     
     private func handleEmptyCommand(_ parameters: [String]) {
@@ -220,34 +213,24 @@ class SessionController: ObservableObject {
             
         case "red":
             preferences.color = .red
-            refresh()
         case "orange":
             preferences.color = .orange
-            refresh()
         case "yellow":
             preferences.color = .yellow
-            refresh()
         case "green":
             preferences.color = .green
-            refresh()
         case "blue":
             preferences.color = .blue
-            refresh()
         case "indigo":
             preferences.color = .indigo
-            refresh()
         case "violet":
             preferences.color = .violet
-            refresh()
         case "pink":
             preferences.color = .pink
-            refresh()
-        
         case "default":
             fallthrough
         case "reset":
             preferences.color = .accent
-            refresh()
         default:
             write("Color not found: \(parameters[0])")}
     }

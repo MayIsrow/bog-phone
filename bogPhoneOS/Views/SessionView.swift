@@ -8,22 +8,18 @@
 import SwiftUI
 
 struct SessionView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @StateObject var sessionController: SessionController
 
     @State private var text = ""
     
     var body: some View {
-        if sessionController.session.isVisible {
-            VStack {
+        VStack {
+            if sessionController.session.isVisible {
+                
                 ScrollViewReader { scrollView in
-                    HStack {
-                        Image(systemName: "microbe.circle")
-                            
-                            .modifier(MinimalModifier(.title3))
-                        Text("bogPhoneOS")
-                            .modifier(MinimalModifier(.title3))
-                    }
-                    .foregroundStyle(Color(sessionController.preferences.color.rawValue))
+                    
                     
                     switch sessionController.session.state {
                     case .frog:
@@ -66,12 +62,31 @@ struct SessionView: View {
                     .onTapGesture {
                         scrollView.scrollTo(sessionController.session.consoleLines.sorted(by: {$0.date < $1.date}).last?.id, anchor: .bottom)
                     }
+                    
                 }
+                
+            } else {
+                EmptyView()
             }
-        } else {
-            EmptyView()
         }
-
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(sessionController.preferences.name)
+                    .modifier(MinimalModifier(.title2))
+                    .foregroundStyle(Color(sessionController.preferences.color.rawValue))
+            }
+            
+            ToolbarItem(placement: .topBarLeading) {
+                Text("exit")
+                    .modifier(MinimalModifier())
+                    .foregroundStyle(Color(BogshColorType.red.rawValue))
+                    .padding()
+                    .onTapGesture {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+            }
+        }
     }
     
     var consoleLinesView: some View {

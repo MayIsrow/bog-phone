@@ -10,10 +10,12 @@ import SwiftData
 
 @Model final class Preferences {
     var name: String
+    var emoji: String
     var color: BogshColorType
     
-    init(name: String, color: BogshColorType = .accent) {
+    init(name: String, emoji: String = "", color: BogshColorType = .accent) {
         self.name = name
+        self.emoji = emoji
         self.color = color
     }
 }
