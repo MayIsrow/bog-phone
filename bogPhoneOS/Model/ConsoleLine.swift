@@ -13,7 +13,7 @@ import SwiftData
         return lhs.date < rhs.date
     }
     
-    @Attribute(.unique) var id: UUID
+    var id: UUID
     var text: String
     var color: BogshColorType
     var date: Date

@@ -11,7 +11,7 @@ import AVFAudio
 
 @Model final class Session {
     
-    @Attribute(.unique) var id = UUID()
+    var id = UUID()
     
     var consoleLines: [ConsoleLine] = []
     

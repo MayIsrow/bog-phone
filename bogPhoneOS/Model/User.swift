@@ -9,7 +9,7 @@ import SwiftData
 import Foundation
 
 @Model final class User {
-    @Attribute(.unique) var id: UUID
+    var id: UUID
     
     var preferences: Preferences
     
