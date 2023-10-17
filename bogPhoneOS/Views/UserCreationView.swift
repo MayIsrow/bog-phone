@@ -27,6 +27,9 @@ struct UserCreationView: View {
                 Divider()
                 
                 TextField("emoji", text: $emoji)
+                    .onChange(of: $emoji.wrappedValue) {
+                        emoji = String($0.onlyEmoji().prefix(1))
+                    }
             }
             .padding()
             .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(BogshColorType.accent.rawValue), lineWidth: 2))
