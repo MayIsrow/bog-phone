@@ -89,6 +89,7 @@ struct BogInView: View {
                 }
                 Spacer()
             }
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("bogPhoneOS")

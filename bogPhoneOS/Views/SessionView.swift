@@ -16,63 +16,52 @@ struct SessionView: View {
     
     var body: some View {
         VStack {
-            if sessionController.session.isVisible {
-                
-                ScrollViewReader { scrollView in
-                    
-                    
-                    switch sessionController.session.state {
-                    case .frog:
-                        FrogView()
-                    case .hole:
-                        HoleView()
-                    case .smiley:
-                        SmileyView()
-                    default:
-                        VStack {
-                            ScrollView {
-                                consoleLinesView
-                            }
-                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(sessionController.preferences.color.rawValue), lineWidth: 2))
-                            .modifier(MinimalModifier())
-                            .padding()
-                            .onChange(of: sessionController.session.consoleLines.sorted(by: {$0.date < $1.date}).last?.id) { id in
-                                scrollView.scrollTo(id, anchor: .bottom)
-                            }
-                            .onAppear {
-                                scrollView.scrollTo(sessionController.session.consoleLines.sorted(by: {$0.date < $1.date}).last?.id, anchor: .bottom)
-                            }
-                        }
+            ScrollViewReader { scrollView in
+                switch sessionController.session.state {
+                case .frog:
+                    FrogView()
+                case .hole:
+                    HoleView()
+                case .smiley:
+                    SmileyView()
+                default:
+                    ScrollView {
+                        consoleLinesView
                     }
-                    
-                    
-                    SessionTextField(placeHolderText:"bogsh", text: $text, sessionController: sessionController) {
-                        if sessionController.session.consoleLines.sorted(by: {$0.date < $1.date}).count == 0 {
-                            withAnimation {
-                                writeToConsole(text)
-                            }
-                        } else {
-                            writeToConsole(text)
-                        }
+                     
+                    .modifier(MinimalModifier())
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(sessionController.preferences.color.rawValue), lineWidth: 2))
+                    .padding()
+                    .onChange(of: sessionController.session.consoleLines.sorted(by: {$0.date < $1.date}).last?.id) { id in
+                        scrollView.scrollTo(id, anchor: .bottom)
                     }
-                    .foregroundStyle(Color(sessionController.preferences.color.rawValue))
-                    .tint(Color(sessionController.preferences.color.rawValue)) // This makes the
-                    .padding([.horizontal, .bottom])
-                    .onTapGesture {
+                    .onAppear {
                         scrollView.scrollTo(sessionController.session.consoleLines.sorted(by: {$0.date < $1.date}).last?.id, anchor: .bottom)
                     }
-                    
                 }
-                
-            } else {
-                EmptyView()
+                SessionTextField(placeHolderText:"bogsh", text: $text, sessionController: sessionController) {
+                    if sessionController.session.consoleLines.sorted(by: {$0.date < $1.date}).count == 0 {
+                        withAnimation {
+                            writeToConsole(text)
+                        }
+                    } else {
+                        writeToConsole(text)
+                    }
+                }
+                .foregroundStyle(Color(sessionController.preferences.color.rawValue))
+                .tint(Color(sessionController.preferences.color.rawValue)) // This makes the
+                .padding([.horizontal, .bottom])
+                .onTapGesture {
+                    scrollView.scrollTo(sessionController.session.consoleLines.sorted(by: {$0.date < $1.date}).last?.id, anchor: .bottom)
+                }
             }
         }
         .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text(sessionController.preferences.name)
-                    .modifier(MinimalModifier(.title2))
+                    .modifier(MinimalModifier(.title3))
                     .foregroundStyle(Color(sessionController.preferences.color.rawValue))
             }
             

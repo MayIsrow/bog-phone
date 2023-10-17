@@ -20,9 +20,6 @@ import AVFAudio
     @Transient
     var isResponding = false
     
-    @Transient
-    var isVisible = true
-    
     init(openView: AppStateType = .console) {
         self.state = openView
     }
