@@ -55,6 +55,7 @@ class SessionController: ObservableObject {
             "bogchamp": handleBoggersCommand,
             "logout": handleLogoutCommand,
             "bogout": handleBogoutCommand,
+            "bogin": handleBogInCommand,
             ":(": handleSadCommand,
             "bogsh": handleBogshCommand,
             ":)": handleSmileyCommand,
@@ -128,7 +129,7 @@ class SessionController: ObservableObject {
     }
     
     private func handleBogoutCommand(_ parameters: [String]) {
-        write("no.")
+        write("press the button dork")
     }
     
     private func handleSadCommand(_ parameters: [String]) {
@@ -276,5 +277,9 @@ class SessionController: ObservableObject {
                 speechSynthesizer.speak(utterance)
             }
         }
+    }
+    
+    private func handleBogInCommand(_ parameters: [String]) {
+        write("You're already bogged in", color: .bogsh)
     }
 }

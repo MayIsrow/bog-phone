@@ -54,7 +54,6 @@ struct SessionView: View {
                         } else {
                             writeToConsole(text)
                         }
-                        
                     }
                     .foregroundStyle(Color(sessionController.preferences.color.rawValue))
                     .tint(Color(sessionController.preferences.color.rawValue)) // This makes the
@@ -78,7 +77,7 @@ struct SessionView: View {
             }
             
             ToolbarItem(placement: .topBarLeading) {
-                Text("exit")
+                Text("bog out")
                     .modifier(MinimalModifier())
                     .foregroundStyle(Color(BogshColorType.red.rawValue))
                     .padding()
@@ -87,6 +86,7 @@ struct SessionView: View {
                     }
             }
         }
+        .toolbarBackground(.hidden, for: .automatic)
     }
     
     var consoleLinesView: some View {
@@ -113,7 +113,7 @@ struct SessionView: View {
 }
 
 #Preview {
-    LockScreen()
+    BogInView()
         .modelContainer(for: User.self, inMemory: true)
 }
 
