@@ -14,15 +14,11 @@ struct BogInView: View {
     
     @Environment(\.modelContext) private var modelContext
     
+    @State var isEditing = false
+    
     var body: some View {
         NavigationStack {
             VStack {
-                Text("bogPhoneOS")
-                    .modifier(MinimalModifier(.title3))
-                    .foregroundStyle(Color(BogshColorType.accent.rawValue))
-                
-                Spacer()
-                
                 if users.isEmpty {
                     HStack {
                         Text("Creating guest user")
@@ -33,6 +29,7 @@ struct BogInView: View {
                         modelContext.insert(User(preferences: Preferences(name: "guest", emoji: "🐸")))
                     }
                 } else {
+                    Spacer()
                     LazyVGrid(columns: [
                         GridItem(.adaptive(minimum: 110))
                     ]) {
@@ -51,14 +48,14 @@ struct BogInView: View {
                                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(user.preferences.color.rawValue), lineWidth: 2))
                                         
                                     }
-                                    if users.count > 1 {
+                                    if isEditing {
                                         HStack {
                                             VStack {
                                                 ZStack {
                                                     Circle()
                                                         .frame(width: 30, height: 30)
                                                     Image(systemName: "xmark.circle.fill")
-                                                        .onLongPressGesture {
+                                                        .onTapGesture {
                                                             modelContext.delete(user)
                                                         }
                                                         .font(.title)
@@ -91,6 +88,23 @@ struct BogInView: View {
                     }
                 }
                 Spacer()
+            }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("bogPhoneOS")
+                        .modifier(MinimalModifier(.title3))
+                        .foregroundStyle(Color(BogshColorType.accent.rawValue))
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Text(isEditing ? "Editing" : "Edit")
+                        .modifier(MinimalModifier())
+                        .foregroundStyle(isEditing ? Color(BogshColorType.red.rawValue) : Color(BogshColorType.accent.rawValue))
+                        .padding()
+                        .onTapGesture {
+                            isEditing.toggle()
+                        }
+                }
             }
         }
         
