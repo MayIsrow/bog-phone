@@ -8,31 +8,31 @@
 import Foundation
 import AVFAudio
 
-class SessionController: ObservableObject {
+class ConsoleController: ObservableObject {
     
-    @Published var session: Session
+    @Published var console: Console
     
     @Published var preferences: Preferences
     
     private let speechSynthesizer = AVSpeechSynthesizer()
     
-    init(session: Session, preferences: Preferences) {
-        self.session = session
+    init(console: Console, preferences: Preferences) {
+        self.console = console
         self.preferences = preferences
     }
     
     func push(_ input: String) {
-        if session.isResponding {
+        if console.isResponding {
             return
         }
         
         let newInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
         write(newInput, color: preferences.color)
         
-        session.isResponding = true
+        console.isResponding = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.respond(newInput)
-            self.session.isResponding = false
+            self.console.isResponding = false
         }
     }
     
@@ -90,7 +90,7 @@ class SessionController: ObservableObject {
     // MARK: - Helper Functions
     
     private func write(_ text: String, color: BogshColorType = .bogsh) {
-        session.consoleLines.append(ConsoleLine(text: text, color: color))
+        console.consoleLines.append(ConsoleLine(text: text, color: color))
     }
     
     // MARK: - Command Handlers
@@ -141,16 +141,16 @@ class SessionController: ObservableObject {
     }
     
     private func handleSmileyCommand(_ parameters: [String]) {
-        session.state = .smiley
+        console.state = .smiley
     }
     
     private func handleKillCommand(_ parameters: [String]) {
-        session.consoleLines = []
-        session.state = .console
+        console.consoleLines = []
+        console.state = .console
     }
     
     private func handleExitCommand(_ parameters: [String]) {
-        session.state = .console
+        console.state = .console
     }
     
     private func handleReactorCommand(_ parameters: [String]) {
@@ -159,7 +159,7 @@ class SessionController: ObservableObject {
     
     private func handleFrogCommand(_ parameters: [String]) {
         write("🐸")
-        session.state = .frog
+        console.state = .frog
     }
     
     private func handleBilboCommand(_ parameters: [String]) {
@@ -167,7 +167,7 @@ class SessionController: ObservableObject {
     }
     
     private func handleHideCommand(_ parameters: [String]) {
-        session.state = .hole
+        console.state = .hole
     }
     
     private func handleRelaxCommand(_ parameters: [String]) {

@@ -1,5 +1,5 @@
 //
-//  SessionView.swift
+//  ConsoleView.swift
 //  bogPhoneOS
 //
 //  Created by May Isrow on 10/16/23.
@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct SessionView: View {
+struct ConsoleView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @StateObject var sessionController: SessionController
+    @StateObject var consoleController: ConsoleController
 
     @State private var text = ""
     
     var body: some View {
         VStack {
             ScrollViewReader { scrollView in
-                switch sessionController.session.state {
+                switch consoleController.console.state {
                 case .frog:
                     FrogView()
                 case .hole:
@@ -30,17 +30,17 @@ struct SessionView: View {
                     }
                      
                     .modifier(MinimalModifier())
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(sessionController.preferences.color.rawValue), lineWidth: 2))
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(consoleController.preferences.color.rawValue), lineWidth: 2))
                     .padding()
-                    .onChange(of: sessionController.session.consoleLines.sorted(by: {$0.date < $1.date}).last?.id) { id in
+                    .onChange(of: consoleController.console.consoleLines.sorted(by: {$0.date < $1.date}).last?.id) { id in
                         scrollView.scrollTo(id, anchor: .bottom)
                     }
                     .onAppear {
-                        scrollView.scrollTo(sessionController.session.consoleLines.sorted(by: {$0.date < $1.date}).last?.id, anchor: .bottom)
+                        scrollView.scrollTo(consoleController.console.consoleLines.sorted(by: {$0.date < $1.date}).last?.id, anchor: .bottom)
                     }
                 }
-                SessionTextField(placeHolderText:"bogsh", text: $text, sessionController: sessionController) {
-                    if sessionController.session.consoleLines.sorted(by: {$0.date < $1.date}).count == 0 {
+                ConsoleTextField(placeHolderText:"bogsh", text: $text, consoleController: consoleController) {
+                    if consoleController.console.consoleLines.sorted(by: {$0.date < $1.date}).count == 0 {
                         withAnimation {
                             writeToConsole(text)
                         }
@@ -48,11 +48,11 @@ struct SessionView: View {
                         writeToConsole(text)
                     }
                 }
-                .foregroundStyle(Color(sessionController.preferences.color.rawValue))
-                .tint(Color(sessionController.preferences.color.rawValue)) // This makes the
+                .foregroundStyle(Color(consoleController.preferences.color.rawValue))
+                .tint(Color(consoleController.preferences.color.rawValue)) // This makes the
                 .padding([.horizontal, .bottom])
                 .onTapGesture {
-                    scrollView.scrollTo(sessionController.session.consoleLines.sorted(by: {$0.date < $1.date}).last?.id, anchor: .bottom)
+                    scrollView.scrollTo(consoleController.console.consoleLines.sorted(by: {$0.date < $1.date}).last?.id, anchor: .bottom)
                 }
             }
         }
@@ -60,9 +60,9 @@ struct SessionView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text(sessionController.preferences.name)
+                Text(consoleController.preferences.name)
                     .modifier(MinimalModifier(.title3))
-                    .foregroundStyle(Color(sessionController.preferences.color.rawValue))
+                    .foregroundStyle(Color(consoleController.preferences.color.rawValue))
             }
             
             ToolbarItem(placement: .topBarLeading) {
@@ -79,7 +79,7 @@ struct SessionView: View {
     }
     
     var consoleLinesView: some View {
-        ForEach(sessionController.session.consoleLines.sorted(by: {$0.date < $1.date})) { line in
+        ForEach(consoleController.console.consoleLines.sorted(by: {$0.date < $1.date})) { line in
             HStack {
                 Text("\(String(line.id.uuidString.prefix(3)))~\(line.text)")
                     .foregroundStyle(Color(line.color.rawValue))
@@ -97,7 +97,7 @@ struct SessionView: View {
     
     private func writeToConsole(_ text: String) {
         self.text = ""
-        sessionController.push("\(text)")
+        consoleController.push("\(text)")
     }
 }
 

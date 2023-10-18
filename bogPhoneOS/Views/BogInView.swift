@@ -1,5 +1,5 @@
 //
-//  LockScreen.swift
+//  BogInView.swift
 //  bogPhoneOS
 //
 //  Created by May Isrow on 10/16/23.
@@ -34,38 +34,36 @@ struct BogInView: View {
                         GridItem(.adaptive(minimum: 110))
                     ]) {
                         ForEach(users) { user in
-                            if let firstSession = user.sessions.first{
-                                ZStack {
-                                    NavigationLink {
-                                        SessionView(sessionController: SessionController(session: firstSession, preferences: user.preferences))
-                                    } label: {
-                                        VStack {
-                                            Text(user.preferences.emoji)
-                                            Text(user.preferences.name)
-                                                .foregroundStyle(Color(user.preferences.color.rawValue))
-                                        }
-                                        .frame(width: 100, height: 100)
-                                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(user.preferences.color.rawValue), lineWidth: 2))
-                                        
+                            ZStack {
+                                NavigationLink {
+                                    ConsoleView(consoleController: ConsoleController(console: user.console, preferences: user.preferences))
+                                } label: {
+                                    VStack {
+                                        Text(user.preferences.emoji)
+                                        Text(user.preferences.name)
+                                            .foregroundStyle(Color(user.preferences.color.rawValue))
                                     }
-                                    if isEditing {
-                                        HStack {
-                                            VStack {
-                                                ZStack {
-                                                    Circle()
-                                                        .frame(width: 30, height: 30)
-                                                    Image(systemName: "xmark.circle.fill")
-                                                        .onTapGesture {
-                                                            modelContext.delete(user)
-                                                        }
-                                                        .font(.title)
-                                                        .foregroundColor(.red)
-                                                }
-                                                
-                                                Spacer()
+                                    .frame(width: 100, height: 100)
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(user.preferences.color.rawValue), lineWidth: 2))
+                                    
+                                }
+                                if isEditing {
+                                    HStack {
+                                        VStack {
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 30, height: 30)
+                                                Image(systemName: "xmark.circle.fill")
+                                                    .onTapGesture {
+                                                        modelContext.delete(user)
+                                                    }
+                                                    .font(.title)
+                                                    .foregroundColor(.red)
                                             }
+                                            
                                             Spacer()
                                         }
+                                        Spacer()
                                     }
                                 }
                             }

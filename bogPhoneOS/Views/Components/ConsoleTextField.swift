@@ -1,5 +1,5 @@
 //
-//  SessionTextField.swift
+//  ConsoleTextField.swift
 //  bogPhoneOS
 //
 //  Created by May Isrow on 10/16/23.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct SessionTextField: View {
+struct ConsoleTextField: View {
     @State var placeHolderText: String
     @Binding var text: String
-    @ObservedObject var sessionController: SessionController
+    @ObservedObject var consoleController: ConsoleController
     @State var onCommit: () -> Void
 
     @FocusState private var isFocused: Bool
@@ -35,7 +35,7 @@ struct SessionTextField: View {
                 .focused($isFocused)
             
             Button(action: action, label: {
-                if !sessionController.session.isResponding {
+                if !consoleController.console.isResponding {
                     Image(systemName: "forward.frame.fill")
                 } else {
                     ProgressView()
@@ -43,7 +43,7 @@ struct SessionTextField: View {
             .buttonStyle(MinimalButtonStyle())
             .padding([.trailing, .vertical], 10)
         }
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(sessionController.preferences.color.rawValue), lineWidth: 2))
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(consoleController.preferences.color.rawValue), lineWidth: 2))
     }
     
     private var buttonPadding:Edge.Set.ArrayLiteralElement {
@@ -51,14 +51,8 @@ struct SessionTextField: View {
     }
     
     private func action() {
-        if !sessionController.session.isResponding {
+        if !consoleController.console.isResponding {
             onCommit()
         }
     }
 }
-
-/*
-#Preview {
-    SessionTextView()
-}
-*/

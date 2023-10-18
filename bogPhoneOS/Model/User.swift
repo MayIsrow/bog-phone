@@ -13,11 +13,11 @@ import Foundation
     
     var preferences: Preferences
     
-    var sessions: [Session]
+    var console: Console
     
     init(preferences: Preferences) {
         self.id = UUID()
         self.preferences = preferences
-        self.sessions = [Session()]
+        self.console = Console()
     }
 }
