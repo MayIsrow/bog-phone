@@ -19,7 +19,7 @@ struct HomeIcon: View {
                 if let systemName = iconSystemName {
                     Image(systemName: systemName)
                         .resizable()
-                        .padding()
+                        .padding(24)
                 }
             }
             .frame(width: 80, height: 80)
