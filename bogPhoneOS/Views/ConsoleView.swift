@@ -66,7 +66,7 @@ struct ConsoleView: View {
             }
             
             ToolbarItem(placement: .topBarLeading) {
-                Text("bog out")
+                Text("exit")
                     .modifier(MinimalModifier())
                     .foregroundStyle(Color(BogshColorType.red.rawValue))
                     .padding()
@@ -100,9 +100,3 @@ struct ConsoleView: View {
         consoleController.push("\(text)")
     }
 }
-
-#Preview {
-    BogInView()
-        .modelContainer(for: User.self, inMemory: true)
-}
-

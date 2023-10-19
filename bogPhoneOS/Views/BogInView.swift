@@ -36,15 +36,16 @@ struct BogInView: View {
                         ForEach(users) { user in
                             ZStack {
                                 NavigationLink {
-                                    ConsoleView(consoleController: ConsoleController(console: user.console, preferences: user.preferences))
+                                    HomeView(user: user)
                                 } label: {
                                     VStack {
                                         Text(user.preferences.emoji)
                                         Text(user.preferences.name)
                                             .foregroundStyle(Color(user.preferences.color.rawValue))
+                                            .modifier(MinimalModifier(.headline))
                                     }
                                     .frame(width: 100, height: 100)
-                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(user.preferences.color.rawValue), lineWidth: 2))
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(user.preferences.color.rawValue), lineWidth: 4))
                                     
                                 }
                                 if isEditing {
@@ -78,10 +79,11 @@ struct BogInView: View {
                                 Image(systemName: "plus")
                                     .padding(2)
                                 Text("Add User")
+                                    .modifier(MinimalModifier(.headline))
                             }
                             .foregroundStyle(Color(BogshColorType.accent.rawValue))
                             .frame(width: 100, height: 100)
-                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(BogshColorType.accent.rawValue), lineWidth: 2))
+                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(BogshColorType.accent.rawValue), lineWidth: 4))
                         }
                     }
                 }

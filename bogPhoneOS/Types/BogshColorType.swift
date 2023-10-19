@@ -20,5 +20,6 @@ enum BogshColorType: String, Codable {
     case indigo = "bindigo"
     case violet = "bviolet"
     case pink = "bpink"
+    case lightGray = "blightGray"
     
 }
