@@ -26,7 +26,7 @@ struct BogInView: View {
                         ProgressView()
                     }
                     .onAppear {
-                        modelContext.insert(User(preferences: Preferences(name: "guest", emoji: "🐸")))
+                        modelContext.insert(User(preferences: Preferences(name: "guest", emoji: "🐸", color: .green)))
                     }
                 } else {
                     Spacer()
